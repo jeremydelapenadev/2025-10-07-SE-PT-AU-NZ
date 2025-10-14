@@ -10,45 +10,10 @@ width, initial-scale=1.0"
     />
 
     <title>Module 1 Exercise 3</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        margin: 0;
-      }
-      .container {
-        display: flex;
-        min-height: 100vh;
-        align-items: stretch;
-      }
-      .column {
-        background: goldenrod;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-      }
-    </style>
+    <link rel="stylesheet" href="mystyles.css">
   </head>
 
-<script>
-    function ChangeHello() {
-        document.getElementById("column1").style.color = "blue"
-        const inputValue = document.getElementById("HelloChange").value;
-        const heading = document.getElementById("heading1");
-        if (inputValue.trim() !== "") {
-            heading.textContent = inputValue;
-        }
-    }
-    function ChangeWorld() {
-        document.getElementById("column2").style.color = "green"
-        const inputValue = document.getElementById("HelloWorld").value;
-        const heading = document.getElementById("heading2");
-        if (inputValue.trim() !== "") {
-            heading.textContent = inputValue;
-        }
-    }
-</script>
+<script src="myscripts.js"></script>
 
   <body>
     <div class="container">
