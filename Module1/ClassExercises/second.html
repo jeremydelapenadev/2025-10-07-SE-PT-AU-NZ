@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Page Title</title>
+</head>
+
+<script>
+    function ChangeFontBlue() {
+        document.getElementById("p1").style.color = "blue"
+    }
+    function ChangeFontYellow() {
+        document.getElementById("p1").style.color = "yellow"   
+    }
+</script>
+
+<body>
+    <div>
+        <h1>This is a heading</h1>
+        <p>This is a paragraph</p>
+    </div>
+    <div>
+        <div class="left">
+        This is the left side
+        </div>
+    <div class="right">
+    This is the right side
+    </div>
+    </div>
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p id="p1">This is a paragraph.</p>
+    <p style="font-size: 25pt;">This is a paragraph.</p>
+    <a>Google:
+    </a>
+    <a href="https://www.google.com">www.google.com</a>
+    <div>
+        <img src="./Assets/Koala.jpg" style="width:200px; height:200px;">
+        <img src="Sloth.jpg" style="width:200px; height:200px;">
+        <img src="Jeremy.jpg" style="width:200px; height:200px;" alt="Image cannot be loaded.">
+    </div>
+    <div>
+        <button onclick="ChangeFontYellow()">Change Color yellow</button>
+    </div>
+        <div>
+        <button onclick="ChangeFontBlue()">Change Color blue</button>
+    </div>
+</body>
+
+<script>
+    document.getElementById("p1").style.color = "blue"
+</script>
+
+</html>
