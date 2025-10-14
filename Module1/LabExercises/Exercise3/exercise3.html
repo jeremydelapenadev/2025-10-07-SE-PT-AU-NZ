@@ -1,37 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
-<meta name="viewport" content="width=device-
-width, initial-scale=1.0">
+    <meta
+      name="viewport"
+      content="width=device-
+width, initial-scale=1.0"
+    />
 
-<title>Module 1 Exercise 3</title>
-<style>
-body { font-family: sans-serif; margin: 0; }
-.container { display: flex; min-height:
-100vh; align-items: stretch; }
-.column { background: goldenrod; display:
-flex; flex-direction: column; justify-content:
-center; align-items: center; flex: 1; }
-</style>
-</head>
-<body>
-<div class="container">
-<div class="column" id="column1">
-<h1 id="heading1">Hello</h1>
-<img src="">
-
-
-</div>
-<div class="column" id="column2">
-<h1 id="heading2">World</h1>
-</div>
-</div>
-</body>
+    <title>Module 1 Exercise 3</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+      }
+      .container {
+        display: flex;
+        min-height: 100vh;
+        align-items: stretch;
+      }
+      .column {
+        background: goldenrod;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+      }
+    </style>
+  </head>
 
 <script>
-    
+    function ChangeHello() {
+        document.getElementById("column1").style.color = "blue"
+        const inputValue = document.getElementById("HelloChange").value;
+        const heading = document.getElementById("heading1");
+        if (inputValue.trim() !== "") {
+            heading.textContent = inputValue;
+        }
+    }
+    function ChangeWorld() {
+        document.getElementById("column2").style.color = "green"
+        const inputValue = document.getElementById("HelloWorld").value;
+        const heading = document.getElementById("heading2");
+        if (inputValue.trim() !== "") {
+            heading.textContent = inputValue;
+        }
+    }
 </script>
 
+  <body>
+    <div class="container">
+      <div class="column" id="column1">
+        <h1 id="heading1">Hello</h1>
+        <form>
+            <input type="text" id="HelloChange" placeholder="Type new heading here.">
+        </form>
+        <br>
+        <img src ="./Assets/Handwave.png" width="100pt" height="100pt">
+        <button style="background-color: rgb(17, 199, 223);" onclick="ChangeHello()">Change Me</button>
+
+      </div>
+      <div class="column" id="column2">
+        <h1 id="heading2">World</h1>
+        <form>
+            <input type="text" id="HelloWorld" placeholder="Type new heading here.">
+        </form>
+        <br>
+        <img src ="./Assets/Earth.png" width="100pt" height="100pt">.
+        <button style="background-color: rgb(0, 255, 85);" onclick="ChangeWorld()">Change Me</button>
+      </div>
+    </div>
+  </body>
 </html>
