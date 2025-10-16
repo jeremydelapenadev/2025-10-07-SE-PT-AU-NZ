@@ -1,0 +1,22 @@
+{
+  "name": "2025-10-07-se-pt-au-nz",
+  "version": "1.0.0",
+  "description": "This is where all the class and lab exercises are found.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ/issues"
+  },
+  "homepage": "https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ#readme",
+  "dependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
