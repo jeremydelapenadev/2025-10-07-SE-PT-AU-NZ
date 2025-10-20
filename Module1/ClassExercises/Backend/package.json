@@ -4,7 +4,8 @@
   "description": "This is where all the class and lab exercises are found.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ#readme",
   "dependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "sentiment": "^5.0.2"
   }
 }
