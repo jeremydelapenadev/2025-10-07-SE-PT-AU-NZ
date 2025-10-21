@@ -1,67 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>page title</title>
-<meta charset="utf-8">
-<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-<header><h1 id="header">Header</h1></header>
+  <head>
+    <title>page title</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="classexercise.css" />
+  </head>
+  <body>
+    <header><h1 id="header">Header</h1></header>
 
-<section>
-<nav>
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">Articles</a></li>
-</ul>
-</nav>
-<article>
-<h2>Article heading</h2>
-<p>Paragraph...</p>
-<a href="https://www.google.com/">More
-information...</a>
-<img src="./Assets/Koala.jpg" width="50pt" height="50pt"
-</article>
-<aside id="aside">
-<h2>Related</h2>
-<ul>
-<li><a href="#">Article 1</a></li>
-<li><a href="#">Article 2</a></li>
-</ul>
-</aside>
-</section>
+    <section>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Articles</a></li>
+        </ul>
+      </nav>
+      <article>
+        <h2>Article heading</h2>
+        <p>Paragraph...</p>
+        <a href="https://www.google.com/">More information...</a>
+        <img src="./Assets/Koala.jpg" width="50pt" height="50pt";>
+      </article>
+      <aside id="aside">
+        <h2>Related</h2>
+        <ul>
+          <li><a href="#">Article 1</a></li>
+          <li><a href="#">Article 2</a></li>
+        </ul>
+      </aside>
+    </section>
 
-<section>
-        <form>
+    <section>
+      <form>
         <div>
-            <label>Street Address</label>
-            <input type="text">
+          <label>Street Address</label>
+          <input type="text" />
         </div>
         <div>
-            <label>City</label>
-            <input type="text">
+          <label>City</label>
+          <input type="text" />
         </div>
         <div>
-            <button onclick ="PlaceOrder()">Order Now </button>
+          <button onclick="PlaceOrder()">Order Now</button>
         </div>
-    </form>
-</section>
+      </form>
+    </section>
 
-<footer>
-<p>@copyright 2050 by nobody. all rights
-reversed</p>
-</footer>
+    <footer>
+      <p>@copyright 2050 by nobody. all rights reversed</p>
+    </footer>
 
-<script>
-document.getElementById("header").innerText =
-'Hello JavaScript';
-document.getElementById("aside").style.backgroundColor =
-'green';
+    <script>
+      document.getElementById("header").innerText = "Hello JavaScript";
+      document.getElementById("aside").style.backgroundColor = "green";
 
-function PlaceOrder() {
-    alert ("Your order is placed!")
-}
-</script>
-
-</body>
+      function PlaceOrder() {
+        console.log("Placing order now...")
+        console.log("executing code...")
+        console.debug("debugging code...")
+        console.error("Some error occurred.")
+        console.warn("Warning! The code is not good.")
+        //alert(document.getElementById("id2243").value)
+        alert("Your order is placed!");
+      }
+    </script>
+  </body>
 </html>

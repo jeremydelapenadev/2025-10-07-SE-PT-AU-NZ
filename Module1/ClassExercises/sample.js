@@ -14,7 +14,7 @@ function Sum() {
     console.log(2 + 3);
     console.log(11 + 5);
 }
-//Sum()
+Sum()
 
 function Sum1(a, b) {
     console.log(a + b);
