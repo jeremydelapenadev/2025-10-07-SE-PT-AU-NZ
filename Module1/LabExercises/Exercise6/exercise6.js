@@ -19,3 +19,13 @@ console.log(userData);
 let userDataArray = [userData.Title, userData.Description, userData.Author, userData["Number of Pages"]];
 
 userDataArray.forEach(item => console.log(item));
+
+let bookArray = [
+    {bookTitle: "The Hunger Games", yearPublished: 2008, bookAuthor: "Suzanne Collins", ["Number of Pages"]: 374},
+    {bookTitle: "Catching Fire", yearPublished: 2009, bookAuthor: "Suzanne Collins", ["Number of Pages"]: 391},
+    {bookTitle: "Mockingjay", yearPublished: 2010, bookAuthor: "Suzanne Collins", ["Number of Pages"]: 390},
+    {bookTitle: "The Ballad of Songbirds and Snakes", yearPublished: 2020, bookAuthor: "Suzanne Collins", ["Number of Pages"]: 517},
+    {bookTitle: "Sunrise of the Reaping", yearPublished: 2025, bookAuthor: "Suzanne Collins", ["Number of Pages"]: 400},
+]
+
+console.log(bookArray)
