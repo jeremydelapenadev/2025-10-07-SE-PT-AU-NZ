@@ -9,3 +9,12 @@ h1, h2{
 body{
     background-color: rgb(149, 177, 202);
 }
+.class1 {
+    color: blue;
+    background-color: pink;
+    font-weight: bold;
+}
+
+/* element selectors don't need to be specified.
+ CSS selectors (class, type, id, and attribute) need to be specified and prefixed by a (.) symbol.
+ Universal selector (*) selects all HTML elements */
