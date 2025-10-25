@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Roller</title>
+</head>
+<body>
+    <h1>Dice Roller</h1>
+    <p>This interactive dice rolling game lets players choose between a d6 or a d10. <br> Click to roll the die and watch as a random number appears. <br> Perfect for quick games, decision-making, or testing your luck!</p>
+
+    <select id="diceType" onchange="changeDiceImage()">
+        <option value="d6">6-Sided Dice (d6)</option>
+        <option value="d10">10-Sided Dice (d10)</option>
+    </select>
+
+    <button onclick="rollDice()">Roll!</button>
+    <br>
+    <br>
+
+    <img id="diceImage" src="Assets/Dice1.png" style="width:200px; height:200px;">
+
+</body>
+</html>
