@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form sample</title>
+
+</head>
+
+<body>
+    <div>
+        <form id="form 1" action="/Module2/Multimedia.html" method="post">
+            <div>
+                <label for="Username">User Name:</label> <!-- To bind them as a key value pair -->
+                <input id="username1" type="text" name="Username">
+            </div>
+            <div>
+                <label for="Password">Password:</label> <!-- To bind them as a key value pair -->
+                <input type="password" name="Password">
+            </div>
+            <div>
+                <label for="email">email:</label> <!-- To bind them as a key value pair -->
+                <input type="email" name="email">
+            </div>            
+            <div>
+                <label for="NoOfChildren">Number of Children:</label>
+                <select name="NoOfChildren">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                </select>
+            </div>
+            <div>
+                <button onclick="HandleFormProcessing()">Submit</button>
+                <!-- OR  <input type="submit" value="Submit"> -->
+            </div>
+        </form>
+    </div>
+    
+</body>
+
+<script>
+    document.getElementbyId("form1").addEventListener("submit", function(event){
+        event.preventDefault();
+    })
+    function HandleFormProcessing() {
+        let username1 = document.getElementById("username1").value
+        if(username1.length < 4)
+        alert("short name, kindly enter more than 4 characters")
+        if(username1.length > 4)
+        alert("Form has been submitted.")
+    }
+</script>
+
+</html>

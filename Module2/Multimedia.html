@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia elements</title>
+
+</head>
+
+<body>
+    <section>
+        <label>Audio:</label>
+        <audio src="/Module2/Assets/MagicalMoments.mp3" controls></audio>
+    </section>
+    <section>
+        <label>Video:</label>
+        <video id="video1">
+            <source src="/Module2/Assets/RagnarokPronteraTheme.mp4" type="video/mp4">Sorry, your video does not support this video.>
+            <source src="/Module2/Assets/Mountains.webm" type="video/webm">Sorry, your video does not support this video.>
+            
+        </video>
+    </section>
+    <section>
+        <button onclick="PlayVideo()">Play</button>
+        <button onclick="PauseVideo()">Pause</button>
+    </section>
+    <section>
+        <figure>
+            <img src="https://sjc1.vultrobjects.com/cucdn/gallery-14/art/ro-archer-male.jpg"
+            alt="Archer image">
+            <figcaption>It's an archer class from Ragnarok Online.</figcaption>
+        </figure>
+    </section>
+</body>
+<script>
+    function PlayVideo() {
+        document.getElementById("video1").play()
+    }
+    function PauseVideo() {
+        document.getElementById("video1").pause()
+    }
+</script>
+</html>

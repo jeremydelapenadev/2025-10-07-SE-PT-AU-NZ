@@ -1,0 +1,38 @@
+li{
+    background-color: yellow;
+}
+
+h1, h2{
+    background-color: green;
+}
+
+body{
+    background-color: rgb(149, 177, 202);
+}
+.class1 {
+    color: blue;
+    background-color: pink;
+    font-weight: bold;
+}
+div {
+    background-color: blue;
+}
+
+#anchor1 {
+    background-color: red; /*takes more priority than class*/
+}
+*{
+    font-size: x-large;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+section.a#anchor2{
+    background-color: blue;
+}
+
+div,
+label,
+input,
+a {
+    color: blue;
+    background-color: gray;
+}
