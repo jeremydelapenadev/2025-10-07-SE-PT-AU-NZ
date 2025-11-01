@@ -1,0 +1,153 @@
+/* I. Selectors */
+/* Put styles for questions 1.1, 1.2, 1.3 and 1.4 here */
+article {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid black;
+
+}
+
+.style-me1 {
+    color: red;
+}
+
+#style-me2 {
+    color: blue;
+}
+
+p#style-me2.style-me1 {
+  color: purple;
+}
+
+/* Put styles for questions 2.1 and 2.2 here */
+
+.my-descendants-are-styled p {
+    background: red;
+}
+
+.my-children-are-styled > p {
+    background: lightgreen;
+}
+
+/* II. Box model and common properties */
+/* Put styles for questions 1-8 here */
+
+.box {
+    background-color: lightblue;
+    margin: 5px 5px 10px 10px; 
+    padding: 5px 5px 10px 10px;
+    height: 150px !important; /*also tried changing to rem and vh */
+    width: 750px; /*also tried changing to rem and vw */
+    border-style: dotted;
+    border-color: red;
+    border: 10px solid black; /* this overrides the previous codes */
+    box-sizing: border-box; /* there's more adjustment in relation to the contents with the content-box */
+    overflow: auto; /* also tried hidden, scroll, and clip */
+    outline-width: 10px; /* I honestly don't know what this does. */
+    border-radius: 1em; /*em looks better than %, IMO */
+    background-image: url(./assets/images/img1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+}
+
+.circle {
+    background-color: lightblue;
+    margin: 5px; 
+    padding: 0;
+    border: 10px solid black;
+    box-sizing: border-box;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-image: url(./assets/images/img1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* III. Positioning */
+/* Put styles for questions 1-3 here */
+
+.position-absolute {
+    position: absolute;
+    top: 0;
+    right: 0; /* This adjusts the position of the element. Putting both stretches the element to both sides (left and right) */
+    background-color: red;
+}
+
+.position-relative {
+    position:relative;
+    background-color: blue; /*The absolute positioning with relative stays within the area. With the absolute positioning outside of relative, it adjustsin relation to the whole webpage. */
+}
+
+.position-sticky {
+    position: sticky;
+    background-color: yellow;
+    Top: 0;
+}
+
+/* IV. Styling text */
+/* Put styles for questions 1-10 here */
+
+.text-style {
+    color:darkorange;
+    font-size: x-large; /*tried px, em, %, vh */
+    line-height: 200%; /* tried %, px em, vh, */
+    font-weight: bold; /* also tried the units 100 - 900 */
+    font-family: 'Roboto', sans serif;
+    text-align: center;
+    letter-spacing: 2px;
+    word-spacing: 5px;
+    text-transform:uppercase; /* also tried capitalize and lowercase */
+    text-decoration:underline; /*also tried line-through */
+}
+
+/* V. Styling links */
+/* Put styles for questions 1-3 here */
+
+a:link { /* link in it's untouched form. I'm not sure why it's not showing as it is. It's purple by default. */
+    color:darkgreen;
+    font-size: x-large;
+    font-weight:500;
+    text-decoration:solid;
+}
+
+a:hover{ /* link that is hovered with a cursor */
+    color: orange;
+    text-decoration:underline;
+}
+
+a:active{ /* link that has been hovered using keyboard -- I don't get this part. */
+    color: red;
+    text-decoration:double;
+}
+
+a:focus { /* link that has been clicked but the cursor is still not released or the browser is navigating to another webpage */
+    color: blue;
+    text-decoration:line-through;
+}
+
+a:visited{ /* link that has been visited */
+    background-color:pink;
+}
+
+/* VI. calc() */
+/* Put styles for questions 1-3 here */
+
+.calc-style {
+    width: 100vw;
+    background-color: lightcoral;
+    width: calc(100vw - 100px);
+}
+
+.fixed-width-col {
+    width: 350px;
+    display:inline-block;
+}
+
+.fluid-col {
+    display:inline-block;
+    width: calc(100% - 500px);
+}
