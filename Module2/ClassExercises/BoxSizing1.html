@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    div {
+      background-color: blue;
+      border: 1px solid black;
+      margin-left: 10px;
+      margin-top: 50px;
+      margin-right: 100px;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 20px;
+      max-width: 100px;
+    }
+
+    .box {
+      padding: 20px;
+      border: 2px solid black;
+      margin: 40px;
+      width: 200px;
+      height: 200px;
+      text-align: center;
+    }
+    .content-box {
+      box-sizing: content-box;
+      background: lightblue;
+    }
+    .border-box {
+      box-sizing: border-box;
+      background: lightgreen;
+    }
+  </style>
+
+  <body>
+    <div>Box</div>
+
+    <section class="content-box box">
+      <p>200px x 200px content box</p>
+      <p>
+        Actual width is 244px = 200px + 2px + 2px (border) + 20px + 20px
+        (padding)
+      </p>
+    </section>
+    <section class="border-box box">
+      <p>200px x 200px border box</p>
+      <p>Actual width is 200px (border and padding contribute to total)</p>
+    </section>
+
+    <section style="border: 2px solid black; width: 100px; height: 100px; overflow:auto;"> <!-- inline styling-->
+      content is too large for the container<br>
+      content is too large for the container<br>
+      content is too large for the container<br>
+      content is too large for the container
+    </section>
+  </body>
+</html>

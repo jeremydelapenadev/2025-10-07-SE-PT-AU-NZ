@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Example</title>
+</head>
+<style>
+    .container{
+        width: 50%;
+        border: 2px solid red;
+        display: flex;
+        flex-direction: row; /* also has column, row-reverse, column-reverse */
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+    .child{
+        width: 150px;
+        height: 150px;
+        background-color: blue;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        border: 1px solid black;
+        font-size: 20px;
+    }
+</style>
+<body>
+    <div class="container"> <!-- parent -->
+            <div class="child">
+                First
+            </div>
+            <div class="child">
+                Second
+            </div>
+            <div class="child">
+                Third
+            </div>
+            <div class="child">
+                Fourth
+            </div>
+            <div class="child">
+                Fifth
+            </div>
+            <div class="child">
+                Sixth
+            </div>
+    </div>
+</body>
+</html>

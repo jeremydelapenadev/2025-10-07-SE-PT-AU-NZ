@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Module 2 - Lab Exercise 1</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Learning about linking two web pages." />
+    <meta name="keywords" content="HTML, web pages, index, form" />
+    <meta name="author" content="Jeremy Dela Pena" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="index.html">Home</a>
+        <a href="form.html">Form</a> 
+      </nav>
+    </header>
+    <br />
+    <main>
+      <div>
+        HTML
+        <h1>My HTML learning journey</h1>
+        <article>
+          <h2>Learning elements - div, span, p, pre, ul, li, ol, article.</h2>
+          <p>p represents paragraph without preserving spacing</p>
+          <pre>
+ Text in         a pre element
+            is displayed in a fixed-width
+            font, and it preserves
+            both      spaces and
+            line breaks.
+ </pre
+          >
+
+          <ul>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>Fourth</li>
+            <ul>
+              <li>Sub Item 1</li>
+              <li>Sub Item 2</li>
+              <li>Sub Item 3</li>
+            </ul>
+          </ul>
+
+          <ol>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>Fourth</li>
+            <ol>
+              <li>Sub Item 1</li>
+              <li>Sub Item 2</li>
+              <li>Sub Item 3</li>
+            </ol>
+          </ol>
+        </article>
+
+        <article>
+          <h2>Simple Data Table</h2>
+
+          <table border="1">
+            <thead>
+              <tr>
+                <th colspan="2">Name and Age</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alice</td>
+                <td>30</td>
+                <td>New York (Third Cell)</td>
+              </tr>
+              <tr>
+                <td rowspan="2">Mike</td>
+                <td>28</td>
+                <td>Texas (Third Cell)</td>
+              </tr>
+              <tr>
+                <td>Bob</td>
+                <td>24</td>
+                <td>London (Third Cell)</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article>
+          <h2>Adding the Image</h2>
+          <img
+            src="https://picsum.photos/400/400"
+            alt="Sample Photo"
+            width="200px"
+            height="200px"
+          />
+          <img
+            src="./assets/html_lab_image.jpg"
+            alt="Sample Photo"
+            width="200px"
+            height="200px"
+          />
+          <br />
+          <video controls width="250">
+            <source src="./assets/flower.webm" type="video/webm">
+            Sorry, your browser doesn't support embedded videos.
+          </video>
+          <br />
+          <audio controls src="./assets/t-rex-roar.mp3">
+            Your browser does not support the <code>audio</code> element.
+          </audio>
+
+          <!-- as soon as I changed them from controls attribute to autoplay, it automatically plays without any buttons available.-->
+
+        </article>
+<br>
+        <form method="POST" action="http://127.0.0.1:5500/form.html">
+          <div>
+            <label>First Name:</label>
+            <input type="text">
+          </div>
+
+          <div>
+            <label>Last Name:</label>
+            <input type="text">
+          </div>
+
+          <div>
+            <p>Favourite coding language -- Choose from the ones below:</p>
+            <label>HTML</label>
+            <input type="radio" value="1">
+            <label>CSS</label>
+            <input type="radio" value="2">
+            <label>JavaScript</label>
+            <input type="radio" value="3">
+          </div>
+
+          <div>
+            <p>Type of vehicle you own:</p>
+            <label>Sedan</label>
+            <input type="checkbox" value="1">
+            <label>Hatchback</label>
+            <input type="checkbox" value="1">
+            <label>SUV</label>
+            <input type="checkbox" value="1">
+          </div>
+<br>
+          <button type="submit">Submit form</button>
+          
+        </form>
+
+      </div>
+      <br />
+
+      <div>CSS</div>
+      <br />
+
+      <div>JavaScript</div>
+    </main>
+    <br />
+    <footer>Copyright &copy; 2024</footer>
+  </body>
+</html>

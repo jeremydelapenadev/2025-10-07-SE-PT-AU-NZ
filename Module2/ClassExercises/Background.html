@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        color: white;
+        /* background-color: pink; */
+        background-size: cover;
+        background-image: url("https://thumbs.dreamstime.com/b/abstract-vector-hi-speed-internet-technology-background-illustration-innovation-57095376.jpg?w=768")
+    }
+    button:hover {
+        background-color: orange;
+    }
+    input:focus {
+        background-color: green;
+    }
+    a:hover{
+        color: brown;
+    }
+    a:visited{
+        background-color:blueviolet
+    }
+    a:link {
+background-color:darkgreen
+    }
+    p::before{
+        content: "####-->>>";
+    }
+    p::first-letter{
+        color: orange; 
+    }
+    p::first-line{
+        text-transform: uppercase;
+        color: blue;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <!-- not correct <img src="https://thumbs.dreamstime.com/b/abstract-vector-hi-speed-internet-technology-background-illustration-innovation-57095376.jpg?w=768" width="1900" height="1700"> -->
+    <h1>Simple html</h1>
+    <p>Simple paragraph written for edemonstration of the background image.<br> More text on second link<br>Third line text</p>
+    <form>
+        <label>Username:</label>
+        <input type="text">
+        <button>Click</button>
+    </form>    
+    <div>
+        <a href="https://www.institutedata.com">Visit my site.</a>
+        <a href="https://www.institutedata.com">Visit my second site.</a>
+    </div>
+</body>
+</html>

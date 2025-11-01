@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .section1{
+        width: 100px;
+        background-color: azure;
+    }
+    .section2{
+        width: 200pt;
+        background-color: aquamarine;
+    }
+    .section3{
+        width: 50%;
+        background-color: blue;
+    }
+</style>
+
+<body>
+    <section class="section1">
+        <p>First paragraph Example of dimension units</p>
+    </section>
+    <section class="section2" id="section22">
+        <p>Second paragraph Example of dimension units<br>
+        Second paragraph Example of dimension units<br>
+        Second paragraph Example of dimension units<br>
+        Second paragraph Example of dimension units</p>
+    </section>
+    <section class="section3">
+        <p>Thrd paragraph Example of dimension units</p>
+    </section>
+    <section>
+        <button onclick="hide()">Hide</button>
+        <button onclick = "document.getElementbyId('section22')".style.display = "block">Show</button>
+    </section>
+</body>
+
+<script>
+    function hide() {
+        document.getElementById("section22").style.display = "none"
+    }
+</script>
+
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+
+<style>
+    section {
+        background-color: aliceblue;
+        color: blue;
+    }
+
+    h1 {
+        position: absolute;
+        top: 100;
+        left: 50;
+        right: 100;
+        bottom: 50;
+    }
+
+    div {
+        color: chartreuse;
+    }
+
+    .class1 { /* class selector */
+        color: red;
+    }
+
+    #div1 {
+        color: green;
+    }
+
+    section > div { /* id selector */
+        color: gray;
+    }
+
+    .section1 {
+        background-color: bisque;
+        color: blueviolet;
+    }
+
+    .section1 .class1 {
+        color: aquamarine;
+    }
+    a:hover {
+        background-color: blueviolet;
+    }
+
+    section {
+        background-color: yellow;
+        color: blue !important;
+    }
+
+    /* p::before {
+        content: "-->";
+    } */
+
+    p::after {
+        content: "-----END-----";
+    }
+
+    p::first-line {
+        font-size: x-large;
+        color: red;
+    }
+
+    p::first-line {
+        font-size: x-large;
+        color: red;
+    }
+
+    .underligned {
+        text-decoration: underline;
+    }
+    @media screen and (min-width: 800px) and (max-width: 1200px) {
+        body {
+            font-size: 45px;
+            background-color: gray;
+            background-image: url("https://i.pinimg.com/736x/45/41/da/4541da21459f1449f78c6cfb5e9b1d8e.jpg");
+        }
+        .section1 {
+            background-color: greenyellow;
+            color: pink;
+        }
+    }
+</style>
+
+<body>
+    <section>
+        <h1 class="class1"> Main section of the web page</h1> <!-- direct descendant-->
+        <div id="div1" style="color: brown;"> <!-- Inline selector -->
+                Information about the main section in detail.
+        </div>
+        <div id="div2">
+            Second section of the main section.
+                <div class="">
+                    Sub div of the div2.
+                </div>
+        </div>
+        <div>
+            Third section of the main section.
+        </div>
+            <a href="https://www.google.com" class="class1"> Visit my website. </a>
+    </section>
+    <section class="class1">
+        <p> 
+            First paragraph detailing about software engineering cohort.<br>First paragraph detailing about software engineering cohort.<br>First paragraph detailing about software engineering cohort.
+        </p>
+        <p class="underlined"> 
+            Second paragraph about the content of the course. 
+        </p>
+        <p>Party popper: &#128137;</p>
+    </section>
+    <section>
+        Content of the section3.
+    </section>
+
+</body>
+
+</html>

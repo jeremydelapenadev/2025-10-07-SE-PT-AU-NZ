@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout Example</title>
+</head>
+<style>
+    .container{
+        width: 50%;
+        border: 2px solid red;
+        display:grid;
+        grid-template-rows:1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .child{
+        width: 150px;
+        height: 150px;
+        color: white;
+        background-color: blue;
+        border: 1px solid black;
+        font-size: 20px;
+        text-align: center;
+        padding: 10px;
+    }
+    .class1{
+        background-color: blue;
+    }
+    .item-5 {
+  grid-column-start: 3;
+  grid-column-end: span col4-start;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+}
+    .item-para {
+    grid-column-start: 4;
+  grid-column-end: span col4-start;
+  grid-row-start: 1;
+  grid-row-end: span 1;    
+    }
+</style>
+<body>
+    <div class="container"> <!-- parent -->
+            <div class="child">
+                First
+            </div>
+            <div class="child item-para">
+                <p>A paragraph mentioning about the grid layout and talks about the content.</p>>
+            </div>
+            <div class="child">
+                Third
+            </div>
+            <div class="child">
+                Fourth
+            </div>
+            <div class="child item-5">
+                <form>
+                    <label>UserName:</label>
+                    <input type="text">
+                    <button>Submit</button>
+                </form>
+            </div>
+            <div class="child">
+                Sixth
+            </div>
+    </div>
+</body>
+</html>
