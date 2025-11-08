@@ -1,0 +1,14 @@
+let result = getCustomerInformationByID(123)
+
+console.log(typeof result); //undefined
+console.log(typeof undefined); // undefined
+console.log(typeof 0); // number
+console.log(typeof 10n); // bigint
+console.log(typeof true); // boolean
+console.log(typeof 'text'); // string
+console.log(typeof Symbol('id')) // symbol
+console.log(typeof Math); // object
+console.log(typeof null); // object (officialy recognised error)
+console.log(typeof console.log); // function
+
+console.log(typeof(result));
