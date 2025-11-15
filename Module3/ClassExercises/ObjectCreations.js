@@ -18,3 +18,6 @@ let user3 = new User("Will", "Smith");
 console.log(user1);
 console.log(user2);
 console.log(user3);
+
+let user4 = user3; // copies by reference
+let user5 = [...user3];
