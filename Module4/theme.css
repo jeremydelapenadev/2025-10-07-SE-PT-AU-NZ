@@ -1,0 +1,10 @@
+:root {
+    --brand-primary:#2b8384;
+    --brand-secondary: #ffaa4200;
+}
+
+/* Override Bootstrap colors */
+.btn-primary {
+    background-color: var(--brand-primary);
+    border-color: ;
+}

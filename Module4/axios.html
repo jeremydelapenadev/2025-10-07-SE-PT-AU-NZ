@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios demo</title>
+  </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios
+.min.js"></script>
+
+  <body></body>
+
+  <script>
+    axios.get("https://jsonplaceholder.typicode.com/posts?_limit=10")
+      .then((response) => console.log(response.data));
+
+    axios.post("https://jsonplaceholder.typicode.com/posts", {
+      // POSTed data goes in the request body
+      title: "The Studio",
+      body: "Something funny",
+      userId: 1,
+    })
+
+    .then((response) => console.log(response.data))
+  </script>
+</html>
