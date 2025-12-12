@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="
+https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js
+"></script>
+  <body>
+    <div id="dateShown"></div>
+    Guess my birthday:
+    <div id="birthday"></div>
+  </body>
+  <script>
+    document.getElementById("dateShown").innerText = moment().format(
+      "MMMM Do YYYY, h:mm:ss a"
+    );
+    document.getElementById("birthday").innerText = moment(
+      "19921226",
+      "YYYYMMDD"
+    ).fromNow();
+  </script>
+</html>

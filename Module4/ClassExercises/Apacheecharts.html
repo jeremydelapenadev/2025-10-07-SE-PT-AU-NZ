@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apache e charts</title>
+  </head>
+
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.1/dist/echarts.min.js"></script>
+
+  <body>
+    <div id="main" style="width: 600px; height: 400px"></div>
+  </body>
+
+  <script>
+let myChart = echarts.init(document.getElementById("main"));
+
+let option = {
+  title: {
+    text: "My charts example",
+  },
+  tooltip: {},
+  legend: {
+    data: ["sales"],
+  },
+  xAxis: {
+    data: ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"],
+  },
+  yAxis: {},
+  series: [
+    {
+      name: "sales",
+      type: "bar",
+      data: [5, 20, 36, 10, 10, 20],
+    },
+  ],
+};
+
+myChart.setOption(option);
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+</head>
+<script
+src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/lu
+xon.min.js"></script>   
+<body>
+    <div id="showDate"></div>
+    Current New York time: <div id="nytime"></div>
+</body>
+<script>
+    const DateTime = luxon.DateTime;
+    let nowLuxon = DateTime.now();
+    document.getElementById("showDate").innerText = nowLuxon.toFormat("MMMM dd, yyyy"); 
+
+let newYork = nowLuxon.setZone("America/New_York").toLocaleString(DateTime.DATETIME_FULL);
+let londonTime = nowLuxon.setZone("America/New_York").toLocaleString(DateTime.DATETIME_FULL);
+
+let end = DateTime.fromISO("2018-03-13");
+let start = DateTime.fromISO("2011-02-11");
+document.getElementById("nytime").innerText = (end.diff(start, ['years', 'months', 'days']).toObject()).days
+
+// document.getElementById("nytime").innerText = newYork;
+</script>
+</html>
