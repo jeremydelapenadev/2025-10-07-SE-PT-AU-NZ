@@ -13,7 +13,7 @@ randomDelay().then(() => console.log('There appears to have been a delay.'));
 returns a promise we can use via .then(), as in the starter code below. */
 
 /* function randomDelay() {
-  const delay = Math.floor(Math.random() * 20) + 1; // 1 to 20 seconds
+  const delay = Math.floor(Math.random() * 20) + 1; // randomly choose between 1 to 20 seconds
   return new Promise(resolve => {
     setTimeout(() => {
       resolve(delay); // resolve with the delay value
@@ -21,8 +21,7 @@ returns a promise we can use via .then(), as in the starter code below. */
   });
 }
 
-// Test
-randomDelay().then(delay => console.log(`There appears to have been a delay of ${delay} seconds.`));
+randomDelay().then(delay => console.log(`There appears to have been a delay of ${delay} seconds.`)); // test
 
 // b) If the random delay is even, consider this a successful delay and resolve the promise, and if the random number is odd, consider this a failure and reject it
 
@@ -48,8 +47,6 @@ randomDelay()
 
 ////////
 
-// Full script
-
 function randomDelay() {
   const delay = Math.floor(Math.random() * 20) + 1; // 1–20 seconds
   return new Promise((resolve, reject) => {
@@ -63,19 +60,16 @@ function randomDelay() {
   });
 }
 
-// Test
+// testing
 randomDelay()
   .then(delay => console.log(`Success! Delay was ${delay} seconds (even).`))
   .catch(delay => console.log(`Failure! Delay was ${delay} seconds (odd).`));
 
-/* Behaviour:
+/* Expected outcome:
 
-Randomly delays 1–20 seconds.
-
-Even delay → prints success.
-
-Odd delay → prints failure.
-
-The delay value is included in the message.
+--> Randomly delays 1–20 seconds.
+--> Even delay: prints success.
+--> Odd delay: prints failure.
+--> The delay value is included in the message.
 
 */

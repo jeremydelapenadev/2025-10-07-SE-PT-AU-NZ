@@ -2,6 +2,7 @@
 
 // a) Write a function printFibonacci() using setInterval that outputs a number in the Fibonacci sequence every second.
 
+/*
 function printFibonacci() {
   let a = 0, b = 1;
 
@@ -12,6 +13,7 @@ function printFibonacci() {
     b = next;            // Shift b to next
   }, 1000);              // Every 1 second
 }
+  */
 
 // printFibonacci();
 
@@ -32,11 +34,11 @@ function printFibonacciTimeouts() {
   nextFib(); // Start printing
 }
 
-printFibonacciTimeouts();
+// printFibonacciTimeouts();
 
 // c) Extend one of the above functions to accept a limit argument, which tells it how many numbers to print before stopping.
 
-function printFibonacci(limit) {
+function printFibonacci(limit = 10) {
   let a = 0, b = 1;
   let count = 0;
 
@@ -55,5 +57,4 @@ function printFibonacci(limit) {
   }, 1000);
 }
 
-// Print first 10 Fibonacci numbers
-printFibonacci(10);
+printFibonacci();

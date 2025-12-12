@@ -10,6 +10,7 @@ console.log(validatedOrderItem(123)); // should throw an error
 
 // a) Create a decorator function validateStringArg(fn) which will validate an argument passed to fn to ensure that it is a string, throwing an error if not
 
+/*
 function validateStringArg(fn) {
   return function(arg) {
     if (typeof arg !== "string") {
@@ -19,28 +20,29 @@ function validateStringArg(fn) {
   };
 }
 
-// Test function
 function orderItems(itemName) {
   return `Order placed for: ${itemName}`;
 }
 
-// Decorate
-const validatedOrderItem = validateStringArg(orderItems);
+const validatedOrderItem = validateStringArg(orderItems); // decorate
 
 console.log(validatedOrderItem("Apple Watch")); // works
 // console.log(validatedOrderItem(123)); // throws Error
+*/
 
 // b) Extend orderItems to use the ... rest operator, allowing multiple item name arguments, and include them all in the returned string
 
+/*
 function orderItems(...itemNames) {
   return `Order placed for: ${itemNames.join(", ")}`;
 }
 
-// Test
 console.log(orderItems("Apple Watch", "iPhone")); // "Order placed for: Apple Watch, iPhone"
+*/
 
 // c) Extend the decorator function to validate as strings all arguments passed to fn
 
+/*
 function validateStringArg(fn) {
   return function(...args) {
     args.forEach(arg => {
@@ -52,15 +54,15 @@ function validateStringArg(fn) {
   };
 }
 
-// Decorate
-const validatedOrderItem = validateStringArg(orderItems);
+const validatedOrderItem = validateStringArg(orderItems); // decorate
 
-// Test
 console.log(validatedOrderItem("Apple Watch", "iPhone")); // works
 // console.log(validatedOrderItem("Apple Watch", 123)); // throws Error
+*/
 
 // d) When testing the decorated function, use try-catch blocks to handle errors thrown for non-string arguments
 
+/*
 try {
   console.log(validatedOrderItem("Apple Watch", "iPhone")); // works
 } catch (error) {
@@ -71,11 +73,11 @@ try {
   console.log(validatedOrderItem("Apple Watch", 123)); // throws
 } catch (error) {
   console.error("Caught error:", error.message);
-} */
+}
+*/
 
 /////////
 
-// Full Script
 function validateStringArg(fn) {
   return function(...args) {
     args.forEach(arg => {
@@ -100,7 +102,9 @@ try {
   console.error("Caught error:", error.message);
 }
 
-/* Final output--
+/* What will be printed--
+
 Order placed for: Apple Watch, iPhone
 Caught error: All arguments must be strings 
+
 */

@@ -11,18 +11,9 @@ console.log(`This car is a ${this.make} ${this.model} from ${this.year}`);
 }
 };
 car.description(); //works
-setTimeout(car.description, 200); //fails
 
-
-/* ANSWER: 
-Why setTimeout(car.description, 200) fails
-
-When you pass a method reference to setTimeout, the this inside the method loses its object context.
-
-this becomes undefined (or window in non-strict mode), so this.make, this.model etc. are undefined.
-
-✅ That’s why the output fails.
-*/
+// setTimeout(car.description, 200); //fails
+// ANSWER: When we pass a method reference to setTimeout, the 'car' inside the method loses its object context. 'car' becomes undefined , so car.make, car.model etc. are undefined.
 
 // a) Fix the setTimeout call by wrapping the call to car.description() inside a function
 
@@ -30,18 +21,17 @@ setTimeout(() => car.description(), 200);
 
 // b) Change the year for the car by creating a clone of the original and overriding it
 
-let newCar = { ...car, year: 2025 };
+let newCar = { ...car, year: 2025};
 console.log(newCar); // make: Porsche, model: 911, year: 2025
 
 // c) Does the delayed description() call use the original values or the new values from b)? Why?
-
-setTimeout(() => car.description(), 200);
+// ANSWER: The call uses the original values because the code in a) calls the method on 'car', not on 'newCar'  
 
 // d) Use bind to fix the description method so that it can be called from within setTimeout without a wrapper function
 
 let boundDescription = car.description.bind(car);
 
-setTimeout(boundDescription, 200); // works without a wrapper
+setTimeout(boundDescription, 200); // works without a wrapper function
 
 // e) Change another property of the car by creating a clone and overriding it, and test that setTimeout still uses the bound value from d)
 

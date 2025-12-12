@@ -8,6 +8,7 @@ It's often used to handle fast-firing scrolling events in a browser, or to preve
 //Using the following code to test and start with:
 /* a) Create a debounce(func) decorator, which is a wrapper that takes a function func and suspends calls to func until there's 1000 milliseconds of inactivity. After this 1 second
 pause, the most recent call to func should be executed and any others ignored. */
+// b) Extend the debounce decorator function to take a second argument ms, which defines the length of the period of inactivity instead of hardcoding to 1000ms
 
 /* Provided code:
 
@@ -20,7 +21,8 @@ setTimeout( printMe, 100);
 setTimeout( printMe, 200);
 setTimeout( printMe, 300); */
 
-function debounce(func) {
+/*
+function debounce(func, ms = 1000) {
   let timerId; // stores the timeout
 
   return function() {
@@ -30,11 +32,10 @@ function debounce(func) {
     // Set a new timer to execute func after 1000ms
     timerId = setTimeout(() => {
       func();
-    }, 1000);
+    }, ms);
   };
 }
 
-// Test
 function printMe() {
   console.log('printing debounced message');
 }
@@ -45,22 +46,7 @@ printMe = debounce(printMe);
 setTimeout(printMe, 100);
 setTimeout(printMe, 200);
 setTimeout(printMe, 300);
-
-// b) Extend the debounce decorator function to take a second argument ms, which defines the length of the period of inactivity instead of hardcoding to 1000ms
-
-function debounce(func, ms = 1000) {
-  let timerId;
-
-  return function() {
-    clearTimeout(timerId);
-    timerId = setTimeout(() => {
-      func();
-    }, ms);
-  };
-}
-
-// Example usage with 500ms debounce
-printMe = debounce(printMe, 500);
+*/
 
 // c) Extend debounce to allow the original debounced function printMe to take an argument msg which is included in the console.log statement. */
 
@@ -75,14 +61,12 @@ function debounce(func, ms = 1000) {
   };
 }
 
-// Example
 function printMe(msg) {
   console.log('printing debounced message:', msg);
 }
 
 printMe = debounce(printMe, 1000);
 
-// Test with arguments
 setTimeout(() => printMe("call 1"), 100);
 setTimeout(() => printMe("call 2"), 200);
 setTimeout(() => printMe("call 3"), 300); // Only this will print after 1000ms

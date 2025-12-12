@@ -5,8 +5,7 @@ class DigitalClock {
     this.prefix = prefix;
   }
   display() {
-    let date = new Date();
-    //create 3 variables in one go using array destructuring
+    let date = new Date(); //create 3 variables in one go using array destructuring
     let [hours, mins, secs] = [
       date.getHours(),
       date.getMinutes(),
@@ -20,14 +19,15 @@ class DigitalClock {
   }
   stop() {
     clearInterval(this.timer);
+    console.log("Clock stopped.");
   }
   start() {
     this.display();
     this.timer = setInterval(() => this.display(), 1000);
   }
 }
-const myClock = new DigitalClock("my clock:");
-myClock.start();
+const myClock = new DigitalClock("My clock:");
+// myClock.start(); // allows the clock to keep printing every second.
 
 /* a) Create a new class PrecisionClock that inherits from DigitalClock and adds the parameter precision – the number of ms between 'ticks'.
 This precision parameter should default to 1 second if not supplied. */
@@ -39,12 +39,12 @@ class PrecisionClock extends DigitalClock {
   }
 
   start() {
+    console.log("Clock started.");
     this.display();
     this.timer = setInterval(() => this.display(), this.precision);
   }
 }
 
-// Test
 const fastClock = new PrecisionClock("Fast Clock:", 200); // updates every 200ms
 fastClock.start();
 setTimeout(() => fastClock.stop(), 2000); // stop after 2s
@@ -82,5 +82,5 @@ class AlarmClock extends DigitalClock {
 }
 
 // Test
-const myAlarm = new AlarmClock("Alarm Clock:", "23:59"); // adjust to a near time to test
+const myAlarm = new AlarmClock("Alarm Clock:", "10:00"); // adjust to a near time to test
 myAlarm.start();
