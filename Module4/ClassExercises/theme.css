@@ -6,5 +6,5 @@
 /* Override Bootstrap colors */
 .btn-primary {
     background-color: var(--brand-primary);
-    border-color: ;
+    border-color: red;
 }
