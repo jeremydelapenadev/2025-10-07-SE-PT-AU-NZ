@@ -1,0 +1,52 @@
+<!-- Make a square slider so that it slides from the top to the bottom and returns to its
+original position, changing background colour in the process. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Slider</title>
+</head>
+
+<style>
+div {
+  /* animation properties */
+  animation-name: my-animation;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  
+  /* other properties */
+  width: 300px;
+  height: 100px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  margin-left: auto;
+  margin-right: auto; 
+
+}
+
+@keyframes my-animation {
+  from {
+    background-color: #d11010;
+    width: 150px;
+    height: 150px;
+    top: 10px;
+  }
+  to {
+    background-color: #44b119;
+    width: 150px;
+    height: 150px;
+    top: 800px;
+  }
+}
+</style>
+
+<body>
+    <div></div>
+</body>
+</html>

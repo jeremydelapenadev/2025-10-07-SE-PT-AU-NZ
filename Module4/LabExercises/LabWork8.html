@@ -1,0 +1,90 @@
+<!-- Use the Luxon documentation to help in answering these
+exercises.
+
+Extension: Try re-doing the exercise using the Moment.js library
+instead.
+
+Using the Luxon library, try to solve the below
+problems:
+1) Calculate the number of days between your birthdate and the current date.
+2) Display the number of years, months, and days between your birthdate and current date.
+     Example: 24 years, 8 months, and 26 days
+3) Given two dates, display the date closest to the current date.
+4) Given two dates, display whether the first date is before or after the second date.
+5) Display the current time in London.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 4 - Lab Work 8</title>
+  
+</head>
+<script
+src="https://cdn.jsdelivr.net/npm/luxon@3.5.0/build/global/lu
+xon.min.js"></script>   
+<body>
+    <p>1. Calculate the number of days between your birthdate and the current date.<br>
+     2. Display the number of years, months, and days between your birthdate and current date.<br>
+     3. Given two dates, display the date closest to the current date.<br>
+     4. Given two dates, display whether the first date is before or after the second date. <br>
+     5. Display the current time in London.</p><br>
+    
+     <div id="showDate"></div>
+     <div id ="closestDate"></div>
+     <div id ="dateComparison"></div>
+     <div id="londonTime"></div>
+</body>
+<script>
+    const DateTime = luxon.DateTime;
+    let nowLuxon = DateTime.now();
+    document.getElementById("showDate").innerText = nowLuxon.toFormat("MMMM dd, yyyy"); 
+
+// for Number 1
+ const birthDate = DateTime.fromISO("1992-12-26");
+ const daysBetween = Math.floor(
+    nowLuxon.diff(birthDate, "days").days
+  );
+
+  document.getElementById("showDate").innerText =
+    `1.) Days since birth: ${daysBetween} days`;
+
+// for Number 2
+  const diff = nowLuxon.diff(birthDate, ["years", "months", "days"]).toObject();
+
+  document.getElementById("showDate").innerText +=
+    `\n 2.) Age: ${Math.floor(diff.years)} years, ${Math.floor(diff.months)} months, ${Math.floor(diff.days)} days`;
+
+// for Number 3
+  const date1 = DateTime.fromISO("2022-11-11");
+  const date2 = DateTime.fromISO("2026-01-05");
+
+  const closest =
+    Math.abs(nowLuxon.diff(date1, "days").days) < Math.abs(nowLuxon.diff(date2, "days").days) ? date1 : date2;
+
+  document.getElementById("closestDate").innerText =
+    `3.) Closest date to today : ${closest.toFormat("MMMM dd, yyyy")} -- between first date (${date1.toFormat("MMMM dd, yyyy")}) and second date (${date2.toFormat("MMMM dd, yyyy")})`;
+
+// for Number 4
+let comparisonText = "";
+
+  if (date1 < date2) {
+    comparisonText = "4.) The first date is BEFORE the second date.";
+  } else if (date1 > date2) {
+    comparisonText = "4.) The first date is AFTER the second date.";
+  } else {
+    comparisonText = "4.) Both dates are the SAME.";
+  }
+
+  document.getElementById("dateComparison").innerText = comparisonText;
+
+
+// for Number 5
+let londonTime = nowLuxon.setZone("Europe/London").toLocaleString(DateTime.DATETIME_FULL);
+
+document.getElementById("londonTime").innerText = `5.) Current London time: ${londonTime}.`;
+
+</script>
+</html>

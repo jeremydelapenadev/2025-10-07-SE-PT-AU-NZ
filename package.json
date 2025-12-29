@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ#readme",
   "dependencies": {
+    "course": "^0.0.1",
     "node-fetch": "^3.3.2"
   }
 }

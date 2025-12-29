@@ -1,0 +1,139 @@
+<!-- In this lab you will show your understanding of populating
+simple templates with data.
+
+We are syncing what is on the screen with what is in the data.
+The data may potentially change over time as new news
+articles are published, so we need to periodically check them
+and refresh the screen with any new data. 
+
+Part 1 - Use the following array to populate a web page
+which contains news. When the page loads up, it should
+display all of the news items in the array.
+Use an interval function to read the array every 5 seconds.
+Every time the array is read, remove all news elements
+from the news container and fill it in with the latest news –
+so the page is always in sync with the data. 
+
+This time you will need to add news to the previous array.
+When the interval function executes every 5 seconds, it should re-populate
+the page with all of the articles in the array at that time.
+So if a new news item has been submitted via the form and added to the
+array, the repeating interval will pick it up and include it on the page,
+together with the previous news items.
+Extension: include a button that will stop the interval from reloading the
+news items. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Work 5</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1 class="row justify-content-center">Latest News</h1>
+    <template id="news-template">
+      <div
+        class="col-sm-12 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mb-3"
+        style="width: 18rem; margin: 10px"
+      >
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Card text.</p>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <div id="newsList" class="row justify-content-center"></div>
+    <div>
+      <form onsubmit="formSubmitted(event)">
+        <div>
+          <label>News Title:</label>
+          <input type="text" id="newsTitle" />
+        </div>
+        <div>
+          <label>News Content:</label>
+          <input type="text" id="newsContent" />
+        </div>
+        <div>
+          <input type="submit" />
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    let news = [
+      {
+        id: 1,
+        title: "Election Results",
+        content: "Newly elected minister...",
+      },
+      { id: 2, title: "Sporting Success", content: "World Cup winners..." },
+      {
+        id: 3,
+        title: "Tornado Warning",
+        content: "Residents should prepare...",
+      },
+    ];
+
+    // to avoid the page from refreshing when pressing the button
+    function formSubmitted(event) {
+      event.preventDefault(); // stops the page refresh
+
+      const title = document.getElementById("newsTitle").value;
+      const content = document.getElementById("newsContent").value;
+
+      // adding news to the start of the array
+      news.unshift({
+        id: Date.now(),
+        title,
+        content,
+      });
+    }
+
+    function getNews() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          // resolve the promise with the news data after 5s
+          resolve(news);
+        }, 500);
+      });
+    }
+
+    // clone, then populate, then append a new template
+    function addCard(news) {
+      const template = document
+        .getElementById("news-template")
+        .content.cloneNode(true);
+
+      template.querySelector(".card-title").innerText = news.title;
+      template.querySelector(".card-text").innerText = news.content;
+      document.getElementById("newsList").appendChild(template);
+    }
+
+    function refreshNews() {
+      getNews().then((news) => {
+        const newsList = document.getElementById("newsList");
+
+        // REMOVE all existing cards
+        newsList.innerHTML = "";
+
+        // ADD latest news first (top-left)
+        [...news].forEach((item) => addCard(item));
+      });
+    }
+
+    // Initial load
+    refreshNews();
+
+    // Re-read array every 5 seconds
+    setInterval(refreshNews, 5000);
+  </script>
+</html>
