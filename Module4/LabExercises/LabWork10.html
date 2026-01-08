@@ -121,20 +121,21 @@ Create a drop-down selection to choose individual product categories for filteri
       const cardTemplate = document.getElementById("card-template");
       const filter = document.getElementById("category-filter");
 
-      let productsData = []; // store all products globally
+      let productsData = [];
 
-      // Fetch all products from Fake Store API
+      // Fetch all products ONCE
       fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
         .then((products) => {
-          productsData = products; // save globally
-          renderCards(productsData); // show all products initially
+          productsData = products;
+          renderCards(productsData);
         })
         .catch((err) => console.error(err));
 
-      // Function to render cards from any array of products
+      // Reusable render function (single source of truth)
       function renderCards(productsArray) {
-        cardList.innerHTML = ""; // clear existing cards
+        cardList.innerHTML = "";
+
         productsArray.forEach((product) => {
           const card = cardTemplate.content.cloneNode(true);
           card.querySelector(".card-img-top").src = product.image;
@@ -145,37 +146,17 @@ Create a drop-down selection to choose individual product categories for filteri
         });
       }
 
-      // Filter products whenever dropdown changes
+      // Category filtering
       filter.addEventListener("change", () => {
         const selected = filter.value;
 
-        if (selected === "all") {
-          renderCards(productsData); // show all products
-        } else {
-          const filtered = productsData.filter((p) => p.category === selected);
-          renderCards(filtered); // show only selected category
-        }
+        const filteredProducts =
+          selected === "all"
+            ? productsData
+            : productsData.filter((p) => p.category === selected);
+
+        renderCards(filteredProducts);
       });
-
-      // fetches the products from FakeStoreAPI
-      fetch("https://fakestoreapi.com/products")
-        .then((res) => res.json())
-        .then((products) => {
-          products.forEach((product) => {
-            // clone template
-            const card = cardTemplate.content.cloneNode(true);
-
-            // populate content with product data (image, title, description, price)
-            card.querySelector(".card-img-top").src = product.image;
-            card.querySelector(".card-title").innerText = product.title;
-            card.querySelector(".card-text").innerText = product.description;
-            card.querySelector(".btn").innerText = `$${product.price}`;
-
-            // append to container
-            cardList.appendChild(card);
-          });
-        })
-        .catch((err) => console.error(err));
     </script>
   </body>
 </html>
