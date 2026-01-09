@@ -1,11 +1,17 @@
-const express = require("express"); // importing express; can give any name in place of the variable express
+const express = require("express");
+const app = require("app"); // imported from the app.js
+
+const swaggerUi = require('swagger-ui-express')
+const swaggerDoc = require('./swagger.json')
+
+
 const myApprouter = require("./routes/myAppRoutes"); // imported the router
 const secondAppRouter = require("./routes/secondAppRoutes")
 const userRouter = require("./routes/userRoutes")
 
 const cors = require("cors");
 
-const app = express(); // web server
+
 const app2 = express() // create another port server
 
 const port = 3000; // not using any standard ports used by other application; should be unique
@@ -24,10 +30,11 @@ app.use('/users', userRouter);
 
 app.use('/', secondAppRouter);
 
-//
-const calculatorRouter = require("./routes/calculatorRoutes");
-
-app.use('/calculate', calculatorRouter);
+app.use(
+    '/api-docs',
+    swaggerUi.serve,
+    swaggerUi.setup(swaggerDocument)
+);
 
 app.get("/", (req, res)=> {
     res.send("Welcome to my backend application");
