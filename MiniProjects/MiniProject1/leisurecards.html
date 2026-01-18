@@ -134,8 +134,21 @@
           // this allows the user to be redirected to the link (where the button is linked)
           const btn = card.querySelector(".btn");
           btn.addEventListener("click", () => {
-            window.location.href = item.link;
+            window.open(item.link, "_blank");
           });
+
+          // from chatGPT - when the user is given the option to be redirected either on a new tab or on the same tab
+          /*
+          btn.addEventListener("click", (e) => {
+            if (e.ctrlKey || e.metaKey) {
+              // Ctrl (Windows/Linux) or Cmd (Mac) → new tab
+              window.open(item.link, "_blank");
+            } else {
+              // Normal click → same tab
+              window.location.href = item.link;
+            }
+          }); */
+
           cardList.appendChild(card);
         });
       }

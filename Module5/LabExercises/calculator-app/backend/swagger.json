@@ -1,0 +1,136 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Calculator Project",
+    "description": "My User Project Application API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Calculator",
+      "description": "API for Calculus in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/calculator/add": {
+      "get": {
+        "tags": ["Addition Service"],
+        "summary": "Add 2 numbers",
+        "parameters": [
+          {
+            "name": "num1",
+            "in": "query",
+            "description": "The First Number",
+            "required": true,
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "num2",
+            "in": "query",
+            "description": "The Second Number",
+            "required": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service allows you to add two numbers together"
+          }
+        }
+      }
+    },
+
+    "/calculator/subtract": {
+      "get": {
+        "tags": ["Subtraction Service"],
+        "summary": "Subtract 2 numbers",
+        "parameters": [
+          {
+            "name": "num1",
+            "in": "query",
+            "description": "The First Number",
+            "required": true,
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "num2",
+            "in": "query",
+            "description": "The Second Number",
+            "required": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service subtracts the second number from the first number"
+          }
+        }
+      }
+    },
+
+    "/calculator/multiply": {
+      "get": {
+        "tags": ["Multiplication Service"],
+        "summary": "Multiply 2 numbers",
+        "parameters": [
+          {
+            "name": "num1",
+            "in": "query",
+            "description": "The First Number",
+            "required": true,
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "num2",
+            "in": "query",
+            "description": "The Second Number",
+            "required": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service multiplies two numbers together"
+          }
+        }
+      }
+    },
+
+    "/calculator/divide": {
+      "get": {
+        "tags": ["Division Service"],
+        "summary": "Divide 2 numbers",
+        "parameters": [
+          {
+            "name": "num1",
+            "in": "query",
+            "description": "The First Number",
+            "required": true,
+            "schema": { "type": "number" }
+          },
+          {
+            "name": "num2",
+            "in": "query",
+            "description": "The Second Number",
+            "required": true,
+            "schema": { "type": "number" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "This service divides the first number by the second number"
+          }
+        }
+      }
+    }
+  }
+}

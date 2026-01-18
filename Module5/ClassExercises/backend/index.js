@@ -1,16 +1,14 @@
 const express = require("express");
-const app = require("app"); // imported from the app.js
+const app = require("./app"); // imported from the app.js; don't forget -- you are trying to import from your local file, so adding the ./ is IMPORTANT
 
 const swaggerUi = require('swagger-ui-express')
 const swaggerDoc = require('./swagger.json')
-
 
 const myApprouter = require("./routes/myAppRoutes"); // imported the router
 const secondAppRouter = require("./routes/secondAppRoutes")
 const userRouter = require("./routes/userRoutes")
 
 const cors = require("cors");
-
 
 const app2 = express() // create another port server
 
@@ -33,7 +31,7 @@ app.use('/', secondAppRouter);
 app.use(
     '/api-docs',
     swaggerUi.serve,
-    swaggerUi.setup(swaggerDocument)
+    swaggerUi.setup(swaggerDoc)
 );
 
 app.get("/", (req, res)=> {

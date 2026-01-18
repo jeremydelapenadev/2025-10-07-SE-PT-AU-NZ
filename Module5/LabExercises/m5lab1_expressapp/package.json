@@ -1,0 +1,17 @@
+{
+  "name": "m5lab1_expressapp",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "Exercise1.js",
+  "scripts": {
+    "start": "node Exercise1.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
