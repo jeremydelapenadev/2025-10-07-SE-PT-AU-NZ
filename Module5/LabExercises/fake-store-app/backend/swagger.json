@@ -3,7 +3,7 @@
   "info": {
     "title": "Fake Store API",
     "version": "1.0.0",
-    "description": "API for fetching products from the fake store via local backend"
+    "description": "API for fetching products from the FakeStore API via a local backend"
   },
   "servers": [
     {
@@ -13,11 +13,48 @@
   "paths": {
     "/api/products": {
       "get": {
-        "summary": "Get all products",
-        "description": "Returns a list of all products from the fake store. Each product has id, title, description, price, category, and image.",
+        "summary": "Get products",
+        "description": "Fetch products from FakeStore API with optional query filters",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "description": "Filter products by category",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "electronics",
+                "jewelery",
+                "men's clothing",
+                "women's clothing"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Limit the number of products returned",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 5
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "description": "Search products by title",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "shirt"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "List of all products",
+            "description": "A list of products",
             "content": {
               "application/json": {
                 "schema": {
@@ -25,16 +62,22 @@
                   "items": {
                     "type": "object",
                     "properties": {
-                      "id": { "type": "integer", "example": 1 },
+                      "id": {
+                        "type": "integer",
+                        "example": 1
+                      },
                       "title": {
                         "type": "string",
                         "example": "Fjallraven Backpack"
                       },
                       "description": {
                         "type": "string",
-                        "example": "A durable backpack for everyday use..."
+                        "example": "Your perfect pack for everyday use..."
                       },
-                      "price": { "type": "number", "example": 109.95 },
+                      "price": {
+                        "type": "number",
+                        "example": 109.95
+                      },
                       "category": {
                         "type": "string",
                         "example": "men's clothing"
@@ -43,39 +86,17 @@
                         "type": "string",
                         "example": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
                       }
-                    },
-                    "required": [
-                      "id",
-                      "title",
-                      "description",
-                      "price",
-                      "category",
-                      "image"
-                    ]
+                    }
                   }
                 }
               }
             }
+          },
+          "500": {
+            "description": "Server error"
           }
         }
       }
     }
-  },
-  "parameters": [
-    {
-      "name": "category",
-      "in": "query",
-      "description": "Filter products by category",
-      "required": false,
-      "schema": {
-        "type": "string",
-        "enum": [
-          "electronics",
-          "jewelery",
-          "men's clothing",
-          "women's clothing"
-        ]
-      }
-    }
-  ]
+  }
 }
