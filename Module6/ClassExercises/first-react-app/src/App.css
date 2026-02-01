@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #526b7c; /* light gray */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -49,3 +53,11 @@ background: linear-gradient(135deg, #1f005c, #5b0060, #870160,
 #ac255e, #ca485c, #ffb56b) fixed; color: white; }
 .FancyBox-blue { background: linear-gradient(135deg, #140061, #50006E,
 #64018C, #6955FF, #4684FF, #1FA7FF) fixed; }
+
+.componentBox {
+  background-color: lightblue;
+  border: 1mm solid lightblue;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}

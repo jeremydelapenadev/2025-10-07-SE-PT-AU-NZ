@@ -1,6 +1,10 @@
 import "../App.css";
 import Movie from "./Movie";
 
+import { useState } from "react";
+
+import AddMovieForm from "./AddMovieForm.jsx";
+
 function MovieList() {
   // collection of objects representing movies
   const movies = [
@@ -21,11 +25,33 @@ function MovieList() {
     },
   ];
 
+  const [currentMovies, setCurrentMovies] = useState(movies);
+
+  function HandleReverseList() {
+    let newMovies = [...currentMovies];
+    newMovies.reverse();
+    setCurrentMovies(newMovies);
+  }
+
+  function handleAddMovie({
+    title,
+    year,
+    synopsis = "Default Synopsis",
+  }) {
+    let updatedMovies = [...currentMovies];
+    updatedMovies.push({
+      id: updatedMovies.length + 1,
+      title,
+      year,
+      synopsis,
+    });
+    setCurrentMovies(updatedMovies);
+  }
   return (
     <>
       <div className="MovieList componentBox">
         <ul>
-          {movies.map((movie) => (
+          {currentMovies.map((movie) => (
             <Movie
               key={movie.id}
               year={movie.year}
@@ -34,6 +60,10 @@ function MovieList() {
             ></Movie>
           ))}
         </ul>
+        <button onClick={HandleReverseList}>Reverse List</button>
+      </div>
+      <div>
+        <AddMovieForm onAddMovie={handleAddMovie}></AddMovieForm>
       </div>
     </>
   );
