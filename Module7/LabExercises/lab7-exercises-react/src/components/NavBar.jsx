@@ -6,17 +6,18 @@
 
 /* LAB EXERCISE 5:
 
-[ ] Update your solution for Exercise 4 to use MUI components for styling
+[/] Update your solution for Exercise 4 to use MUI components for styling
 [ ] Use the AppBar for navigation and MUI form components for any form inputs
 
 [ ] Extension: Include the PostList component and style using MUI cards and grids
 [ ] Extension: Try to create a custom theme using createTheme. */
 
 
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import "../App.css";
 import { useContext } from "react";
 import { userContext } from "../context/UserProvider";
+import ButtonAppBar from "./ButtonAppBar";
 
 export default function NavBar() {
   // const { theme } = useContext(MyThemeContext);
@@ -24,7 +25,9 @@ export default function NavBar() {
   const { currentUser } = useContext(userContext);
 
   return (
-    <nav className="NavBar">
+    <>
+    <ButtonAppBar></ButtonAppBar>
+    {/*<nav className="NavBar">
       <ul className="menu">
         <li>
           <NavLink to="/">Home</NavLink>
@@ -37,8 +40,8 @@ export default function NavBar() {
             <NavLink to="/rates">BitCoin Rates</NavLink>
           </li>
         ) : null}
-      </ul>{" "}
-      {/* ++ Add another page with route and component */}
-    </nav>
+      </ul>{" "} 
+    </nav>*/}
+    </>
   );
 }
