@@ -2,6 +2,8 @@ import CustomCard from "./CustomCard";
 import BasicGrid from "./BasicGrid";
 import MUIForm from "./MUIForm";
 import MUIDialog from "./MUIDialog";
+import SXExample from "./SXExample";
+import BasicUsage from "./StyledUtility";
 
 function HomePage() {
   const students = [
@@ -12,9 +14,12 @@ function HomePage() {
 
   return (
     <>
+      <h1> Welcome to my home page</h1>
+      <BasicUsage></BasicUsage>
+      <SXExample/>
       <MUIDialog text="This is a dialog box."></MUIDialog>
       <MUIForm/>
-      <h1> Welcome to my home page</h1>
+      
       <h2> Custom Card:</h2>
       {students.map((student) => (
         <CustomCard title={student.firstName} picture={student.img}></CustomCard>

@@ -15,14 +15,9 @@
 
 // import { NavLink } from "react-router-dom";
 import "../App.css";
-import { useContext } from "react";
-import { userContext } from "../context/UserProvider";
 import ButtonAppBar from "./ButtonAppBar";
 
 export default function NavBar() {
-  // const { theme } = useContext(MyThemeContext);
-
-  const { currentUser } = useContext(userContext);
 
   return (
     <>
