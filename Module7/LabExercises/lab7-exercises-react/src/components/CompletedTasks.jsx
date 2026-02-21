@@ -43,7 +43,7 @@ function CompletedTasks() {
   };
 
   return (
-    <Box display="flex" justifyContent="center" mt={4}>
+    <Box display="flex" justifyContent="center" mt={11}>
       <Paper elevation={3} sx={{ p: 4, width: "800px" }}>
         <Typography variant="h4" gutterBottom>
           Module 7 Checklist

@@ -7,7 +7,7 @@ export const mainTheme = createTheme({
     secondary: { main: "#5f6368", contrastText: "#ffffff" }, // Gray for secondary actions
     background: {
       default: "#f1f3f4", // Light gray background
-      paper: "#ffffff",    // Card / Paper background
+      paper: "#f5f5f8",    // Card / Paper background
     },
     text: {
       primary: "#202124",
