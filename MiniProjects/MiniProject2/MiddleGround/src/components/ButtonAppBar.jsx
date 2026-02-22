@@ -13,9 +13,12 @@ export default function ButtonAppBar() {
   const { currentUser } = useContext(userContext);
 
   return (
-    <AppBar position="fixed" sx={{
-    backgroundColor: "#1d2330", // dark background colour
-  }}>
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: "#010e29", // dark background colour
+      }}
+    >
       <Toolbar>
         {/* Left side (Icon + Title) */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -26,7 +29,7 @@ export default function ButtonAppBar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2 }}
+            sx={{ mr: 0 }}
           >
             <HomeIcon />
           </IconButton>
@@ -36,13 +39,13 @@ export default function ButtonAppBar() {
             component="div"
             sx={{
               fontWeight: 900,
-              letterSpacing: 3,
+              letterSpacing: -1,
               background: "linear-gradient(90deg, #21e4d3, #f1bb0b)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
           >
-            CODEQUEST
+            MiddleGround
           </Typography>
         </Box>
         {/* This pushes the contents below to the right. */}
@@ -52,20 +55,20 @@ export default function ButtonAppBar() {
             <Box sx={{ display: "flex" }}>
               <Button
                 component={NavLink}
-                to="/tasks"
+                to="/spaces"
                 color="inherit"
                 sx={{ mr: 3 }}
               >
-                Challenges
+                Spaces
               </Button>
 
               <Button
                 component={NavLink}
-                to="/rates"
+                to="/favourites"
                 color="inherit"
                 sx={{ mr: 3 }}
               >
-                Progress
+                Favourites
               </Button>
 
               <Button component={NavLink} to="/login" color="inherit">
@@ -74,9 +77,19 @@ export default function ButtonAppBar() {
             </Box>
           </>
         ) : (
-          <Button component={NavLink} to="/login" color="inherit">
-            Login
-          </Button>
+          <Box>
+            <Button
+              component={NavLink}
+              to="/spaces"
+              color="inherit"
+              sx={{ mr: 3 }}
+            >
+              Spaces
+            </Button>
+            <Button component={NavLink} to="/login" color="inherit">
+              Login
+            </Button>
+          </Box>
         )}
       </Toolbar>
     </AppBar>

@@ -1,6 +1,7 @@
 import "./App.css";
 import AppRoutes from "./components/AppRoutes";
 import NavBar from "./components/NavBar";
+import { FavouritesProvider } from "./context/UserFavourites";
 import UserProvider from "./context/UserProvider";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <div>
         <UserProvider>
           <NavBar></NavBar>
-          <AppRoutes></AppRoutes>
+          <FavouritesProvider><AppRoutes></AppRoutes></FavouritesProvider>
         </UserProvider>
       </div>
     </>

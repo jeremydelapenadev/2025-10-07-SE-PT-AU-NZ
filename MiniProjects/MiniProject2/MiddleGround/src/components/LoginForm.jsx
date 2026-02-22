@@ -30,8 +30,8 @@ function LoginForm() {
 
       handleUpdateUser(emailInputProps.value); // store the user information in the context
 
-      // <-- NEW: Immediately redirect to dashboard
-      navigate("/");
+      // <-- Immediately redirect to dashboard
+      navigate("/favourites");
       setResult("User logged in successfully.");
     }
   }
