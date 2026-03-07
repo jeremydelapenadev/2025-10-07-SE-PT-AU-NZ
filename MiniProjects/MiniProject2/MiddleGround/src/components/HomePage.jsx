@@ -1,12 +1,9 @@
-import { useContext } from "react";
-import { userContext } from "../context/UserProvider";
 import { TextField, Button, Box, Typography, Paper } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import ImageScroller from "./ImageScroller";
 
 function HomePage() {
-  const { currentUser } = useContext(userContext);
 
   return (
     <>
