@@ -1,0 +1,18 @@
+Exercise 3 (Page 40)
+
+Try hosting the GitHub repo of a NodeJS application that you have already
+created, using AWS Elastic Beanstalk.
+
+Choose a standalone repository with no dependencies on a database.
+Share the link of your hosted application with your trainer.
+
+--
+
+Showed process of using AWS Elastic Beanstalk to Mirza during the class. Mirza approved of it.
+
+AWS Process below:
+
+EC2 -->
+        Application (Hello-Express) --> 
+                                        Environment (Hello-Express-env) -->
+                                                                            Pipeline

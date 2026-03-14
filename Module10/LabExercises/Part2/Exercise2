@@ -1,1 +1,10 @@
+Exercise 2 (Page 23)
+
+Try hosting the docker image of your NodeJS application that you previously
+configured to use GitHub actions to deploy on DockerHub.
+
+Share the link of your hosted application to your trainer.
+
+--
+
 http://ec2-3-106-137-152.ap-southeast-2.compute.amazonaws.com/

@@ -1,0 +1,13 @@
+/* Exercise 5 (Page 64) https://drive.google.com/drive/folders/1Az2LS7OiuGDsx1MB7rPtXtk_ak_t6_6W
+
+Using the guide at Socket.IO as a helper, try to implement a basic chat app which includes one of their suggested
+extensions (or come up with your own!):
+
+[ ] Broadcast a message to connected users when someone connects or disconnects.
+[ ] Add support for nicknames.
+[ ] Don’t send the same message to the user that sent it. Instead, append the message directly as soon as he/she
+[ ] presses enter.
+[ ] Add “{user} is typing” functionality.
+[ ] Show who’s online.
+
+*/
