@@ -9,7 +9,6 @@ import {
   CardMedia,
   Typography,
   Button,
-  Box,
 } from "@mui/material";
 
 function Favourites() {
@@ -18,7 +17,11 @@ function Favourites() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{
+    marginTop: "5px",
+    padding: "0 50px 50px 50px",
+  }}
+  className="fade-in">
       <Typography variant="h2" gutterBottom sx={{ fontWeight: 600 }}>
         My Favourite Spaces
       </Typography>
@@ -44,20 +47,23 @@ function Favourites() {
           }}
         >
           {favourites.map((space) => (
-            <Card key={space.id}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={space.image}
-                alt={space.name}
-              />
+            <Card key={space._id}>
+              <div className="image-container">
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={space.image_url}
+                  alt={space.name}
+                  className="space-image"
+                />
+              </div>
               <CardContent>
                 <Typography variant="h6">{space.name}</Typography>
-                <Typography variant="body2">{space.description}</Typography>
+                <Typography variant="body2">{space.about}</Typography>
 
                 <Button
                   color="error"
-                  onClick={() => removeFavourite(space.id)}
+                  onClick={() => removeFavourite(space._id)}
                   style={{ marginTop: "10px" }}
                 >
                   Remove

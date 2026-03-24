@@ -19,13 +19,11 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 
 function Spaces() {
-  
   const { favourites, addFavourite } = useContext(UserFavourites);
   const { currentUser } = useContext(userContext);
   const navigate = useNavigate();
-
   const [spaces, setSpaces] = useState([]);
-  
+
   useEffect(() => {
     fetch("http://localhost:8080/api/spaces")
       .then((res) => res.json())
@@ -66,7 +64,7 @@ function Spaces() {
     }
 
     // Check if already added
-    const alreadyAdded = favourites.some((fav) => fav.id === space.id);
+    const alreadyAdded = favourites.some((fav) => fav._id === space._id);
     if (alreadyAdded) {
       setDialogMessage("You have already added this to your favourite spaces.");
       setDialogOpen(true);
@@ -75,7 +73,6 @@ function Spaces() {
 
     // Normal behaviour if logged in
     addFavourite(space);
-    setSelectedSpace(space);
     setDialogMessage(`${space.name} has been added to your favourites.`);
     setDialogOpen(true);
   };
@@ -92,8 +89,11 @@ function Spaces() {
   };
 
   const filteredSpaces = spaces.filter((space) => {
+    const autismFeatures = space.autism_friendly_features || [];
+    const accessibilityFeatures = space.accessibility_features || [];
     return (
-      (filters.type === "" || space.type === filters.type) &&
+      (filters.type === "" ||
+        (space.type || "").toLowerCase() === filters.type.toLowerCase()) &&
       (filters.council === "" || space.council === filters.council) &&
       (filters.cost === "" || space.cost === filters.cost) &&
       (filters.ageSuitability === "" ||
@@ -101,18 +101,20 @@ function Spaces() {
           .toLowerCase()
           .includes(filters.ageSuitability.toLowerCase())) &&
       (filters.autismFriendlyFeatures === "" ||
-        space.autism_friendly_features
-          .toLowerCase()
-          .includes(filters.autismFriendlyFeatures.toLowerCase())) &&
+        autismFeatures.some((feature) =>
+          feature
+            .toLowerCase()
+            .includes(filters.autismFriendlyFeatures.toLowerCase()),
+        )) &&
       (filters.accessibility === "" ||
-        space.accessibility_features || [].some((feature) =>
-          feature.toLowerCase().includes(filters.accessibility.toLowerCase())
-      ))
+        accessibilityFeatures.some((feature) =>
+          feature.toLowerCase().includes(filters.accessibility.toLowerCase()),
+        ))
     );
   });
 
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{ padding: "10px" }} className="fade-in">
       <Typography variant="h2" gutterBottom sx={{ fontWeight: 600 }}>
         Community Spaces
       </Typography>
@@ -129,8 +131,9 @@ function Spaces() {
       >
         <select name="type" value={filters.type} onChange={handleChange}>
           <option value="">Type</option>
-          <option value="leisure">Leisure</option>
           <option value="library">Library</option>
+          <option value="leisure centre">Leisure Centre</option>
+          <option value="swimming">Swimming</option>
         </select>
 
         <select name="council" value={filters.council} onChange={handleChange}>
@@ -213,12 +216,15 @@ function Spaces() {
         >
           {filteredSpaces.map((space) => (
             <Card key={space._id}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={space.image_url}
-                alt={space.name}
-              />
+              <div className="image-container">
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={space.image_url}
+                  alt={space.name}
+                  className="space-image"
+                />
+              </div>
               <CardContent>
                 <Typography variant="h6">
                   {space.name}

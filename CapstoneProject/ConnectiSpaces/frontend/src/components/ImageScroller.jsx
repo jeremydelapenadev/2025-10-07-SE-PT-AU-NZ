@@ -40,17 +40,10 @@ export default function ImageScroller() {
   }, [spaces]);
 
   return (
-    <div>
-      <p>{spaces.length} spaces loaded</p>
-
-      <div className="scroll-wrapper" ref={scrollRef}>
-        {spaces.map((space) => (
-          <img
-            key={space._id}
-            src={space.image_url}
-            alt={space.name}
-            className="scroll-img"
-          />
+    <div className="scroll-wrapper">
+      <div className="scroll-track">
+        {[...spaces, ...spaces].map((space, index) => (
+          <img key={index} src={space.image_url} alt={space.name} />
         ))}
       </div>
     </div>

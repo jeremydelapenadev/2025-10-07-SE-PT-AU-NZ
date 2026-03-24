@@ -19,7 +19,6 @@ import {
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CommentIcon from '@mui/icons-material/Comment';
 import AddIcon from '@mui/icons-material/Add';
-import { spaces } from '../assets/data';
 import { UserFavourites } from '../context/UserFavourites';
 import { userContext } from '../context/UserProvider';
 
@@ -71,8 +70,9 @@ export default function Community({ isLoggedIn = false }) {
   };
 
   return (
+     <div className="fade-in" style={{ padding: "50px" }}>
     <Box sx={{ p: 3, maxWidth: '1000px', margin: '0 auto' }}>
-      <Typography variant="h4" sx={{ fontWeight: 'bold', mt: 5, mb: 1 }}>Community</Typography>
+      <Typography variant="h2" gutterBottom sx={{ fontWeight: 600, mt: 3 }}>Community</Typography>
       <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
         A safe place to share, ask, and celebrate.
       </Typography>
@@ -133,5 +133,6 @@ export default function Community({ isLoggedIn = false }) {
         ))}
       </Stack>
     </Box>
+    </div>
   );
 }
