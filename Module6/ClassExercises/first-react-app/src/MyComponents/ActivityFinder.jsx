@@ -32,7 +32,7 @@ function ActivityFinder() {
 
   return (
     <>
-    {currentUser.user?(
+    {currentUser?.username ? (
     <div className="ActivityFinder componentBox">
       <h3>Activity Finder</h3>
       <label>

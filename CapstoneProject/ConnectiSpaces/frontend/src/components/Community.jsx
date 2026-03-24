@@ -46,7 +46,7 @@ export default function Community({ isLoggedIn = false }) {
     if (!newPost.trim()) return;
     const post = {
       id: Date.now(),
-      author: currentUser ? currentUser.name : 'Current User',
+      author: currentUser?.username ? currentUser.username : 'Current User',
       content: newPost,
       tag: newTag,
       createdAt: new Date(),

@@ -23,7 +23,7 @@ export default function NavBar() {
         <li>
           <NavLink to="/posts">Posts</NavLink>
         </li>
-        {currentUser ? (
+        {currentUser?.username ? (
           <li>
             <NavLink to="/Contact">Contact</NavLink>{" "}
           </li>

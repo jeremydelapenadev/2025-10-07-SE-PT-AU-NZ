@@ -46,7 +46,7 @@ function LoginForm() {
 
   return (
     <>
-      {currentUser ? (
+      {currentUser?.username ? (
         <button onClick={logout}>Logout</button>
       ) : (
         <>

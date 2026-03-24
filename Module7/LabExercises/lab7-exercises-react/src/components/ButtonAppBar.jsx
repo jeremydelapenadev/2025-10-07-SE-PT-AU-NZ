@@ -38,7 +38,7 @@ export default function ButtonAppBar() {
           <Box sx={{ flexGrow: 1 }}/>
 
           {/* Right side buttons */}
-          {currentUser ? ( <>
+          {currentUser?.username ? ( <>
           <Box sx={{ display: "flex"}}>
           <Button component={NavLink} to="/tasks" color="inherit" sx={{ mr: 3 }}>
               Completed Tasks

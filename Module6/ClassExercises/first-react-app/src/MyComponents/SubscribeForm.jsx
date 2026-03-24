@@ -35,7 +35,7 @@ export default function SubscribeForm() {
   }
   return (
     <>
-      {currentUser.user ? (
+      {currentUser?.username ? (
         <div className="SubscribeForm componentBox">
           <label>
             First name:

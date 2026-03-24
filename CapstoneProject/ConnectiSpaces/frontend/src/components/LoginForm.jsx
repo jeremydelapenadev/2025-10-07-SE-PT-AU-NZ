@@ -17,22 +17,45 @@ function LoginForm() {
   // STEP 3: Use the Context.
   const { currentUser, handleUpdateUser } = useContext(userContext);
 
-  function FormSubmitted(e) {
-    e.preventDefault(); // important for MUI form submit
+  async function FormSubmitted(e) {
+    e.preventDefault();
 
-    if (emailInputProps.value.length < 5)
+    if (emailInputProps.value.length < 5) {
       setResult("Email cannot be less than 5 characters");
-    else if (passInputProps.value.length < 4)
+      return;
+    }
+
+    if (passInputProps.value.length < 4) {
       setResult("Password cannot be less than 4 characters");
-    else {
-      resetEmail("");
-      resetPassword("");
+      return;
+    }
 
-      handleUpdateUser(emailInputProps.value); // store the user information in the context
+    try {
+      const response = await fetch("http://localhost:8080/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: emailInputProps.value,
+          password: passInputProps.value,
+        }),
+      });
 
-      // <-- Immediately redirect to dashboard
-      navigate("/favourites");
+      const data = await response.json();
+
+      if (!response.ok) {
+        setResult(data.message);
+        return;
+      }
+
+      handleUpdateUser(data.user); // store the user information in the context
+
+      // <-- Immediately redirect to home
+      navigate("/");
       setResult("User logged in successfully.");
+    } catch (err) {
+      setResult("Server error. Try again.");
     }
   }
 
@@ -45,11 +68,15 @@ function LoginForm() {
     <>
       {" "}
       {/* used the Button prop */}
-      {currentUser ? ( <>
-        <Typography variant="h6" sx={{ mb: 2}}>Are you sure you want to logout?</Typography>
-        <Button variant="contained" color="error" onClick={logout}>
-          Logout
-        </Button> </>
+      {currentUser ? (
+        <>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Are you sure you want to logout?
+          </Typography>
+          <Button variant="contained" color="error" onClick={logout}>
+            Logout
+          </Button>{" "}
+        </>
       ) : (
         <>
           <Box

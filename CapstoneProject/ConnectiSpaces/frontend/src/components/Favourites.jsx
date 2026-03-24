@@ -26,7 +26,7 @@ function Favourites() {
         My Favourite Spaces
       </Typography>
       <Typography variant="h5" sx={{ fontWeight: 600, mb:3 }}>
-        Welcome, <span style={{ color: "blue" }}>{currentUser}</span>!
+        Welcome, <span style={{ color: "blue" }}>{currentUser?.username}</span>!
       </Typography>
       <Button
         variant="outlined"
