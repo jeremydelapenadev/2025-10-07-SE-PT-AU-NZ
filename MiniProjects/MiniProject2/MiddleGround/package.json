@@ -1,9 +1,10 @@
 {
-  "name": "middleground",
+  "name": "ConnectiSpaces",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "nodemon App.jsx",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
