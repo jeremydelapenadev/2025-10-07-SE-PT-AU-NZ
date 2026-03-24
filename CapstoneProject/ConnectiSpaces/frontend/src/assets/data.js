@@ -1,184 +1,348 @@
 export const spaces = [
   {
-    "id": 1,
-    "type": "leisure",
-    "name": "Blacktown Leisure Centre Stanhope",
-    "council": "Blacktown City Council",
-    "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/59/59/8a/the-front-entry.jpg",
-    "description": "Large aquatic and fitness centre with indoor and outdoor pools, gym, and program rooms.",
-    "autismFriendlyFeatures": "Off-peak quieter hours, structured swimming lessons, family change rooms.",
-    "cost": "Paid",
-    "tags": ["swimming", "movement", "indoor", "fitness"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible parking, aquatic wheelchair, accessible change rooms."
+    id: 1,
+    name: "Blacktown Leisure Centre Stanhope",
+    type: "Leisure Centre",
+    council: "Blacktown City Council",
+    image_url: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/59/59/8a/the-front-entry.jpg",
+    about: "Large aquatic and fitness centre with indoor and outdoor pools, gym, and program rooms.",
+    autism_friendly_features: [
+      "Off-peak quieter hours",
+      "Structured swimming lessons",
+      "Family change rooms"
+    ],
+    cost: "Paid",
+    tags: ["swimming", "movement", "indoor", "fitness"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible parking",
+      "Aquatic wheelchair",
+      "Accessible change rooms"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "Off-peak hours",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 2,
-    "type": "leisure",
-    "name": "Mount Druitt Swimming Centre",
-    "council": "Blacktown City Council",
-    "image": "https://www.blacktownaquaticandsports.com.au/files/assets/keyvenues/v/1/venues/mount-druitt-swimming-centre/mdsc-pool.jpg",
-    "description": "Outdoor seasonal swimming complex with lap pool and leisure pool.",
-    "autismFriendlyFeatures": "Open outdoor space reduces echo and sensory overload.",
-    "cost": "Low-cost",
-    "tags": ["swimming", "outdoor", "movement"],
-    "ageSuitability": "All ages",
-    "accessibility": "Ramp access, accessible amenities."
+    id: 2,
+    name: "Mount Druitt Swimming Centre",
+    type: "Swimming",
+    council: "Blacktown City Council",
+    image_url: "https://www.blacktownaquaticandsports.com.au/files/assets/keyvenues/v/1/venues/mount-druitt-swimming-centre/mdsc-pool.jpg",
+    about: "Outdoor seasonal swimming complex with lap pool and leisure pool.",
+    autism_friendly_features: [
+      "Open outdoor space reduces echo and sensory overload"
+    ],
+    cost: "Low-cost",
+    tags: ["swimming", "outdoor", "movement"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Ramp access",
+      "Accessible amenities"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 3,
-    "type": "leisure",
-    "name": "Camden War Memorial Pool",
-    "council": "Camden Council",
-    "image": "https://i0.wp.com/camdenpool.com.au/wp-content/uploads/2024/08/caamden-mta-pool2.jpg.jpg",
-    "description": "Outdoor aquatic centre with 50m pool and leisure facilities.",
-    "autismFriendlyFeatures": "Quieter weekday periods, structured swimming programs.",
-    "cost": "Low-cost",
-    "tags": ["swimming", "outdoor", "movement"],
-    "ageSuitability": "All ages",
-    "accessibility": "Accessible entry, amenities, parking."
+    id: 3,
+    name: "Camden War Memorial Pool",
+    type: "Swimming",
+    council: "Camden Council",
+    image_url: "https://i0.wp.com/camdenpool.com.au/wp-content/uploads/2024/08/caamden-mta-pool2.jpg.jpg",
+    about: "Outdoor aquatic centre with 50m pool and leisure facilities.",
+    autism_friendly_features: [
+      "Quieter weekday periods",
+      "Structured swimming programs"
+    ],
+    cost: "Low-cost",
+    tags: ["swimming", "outdoor", "movement"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Accessible entry",
+      "Accessible amenities",
+      "Accessible parking"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "Quieter weekday periods",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 4,
-    "type": "leisure",
-    "name": "Macquarie Fields Leisure Centre",
-    "council": "Campbelltown City Council",
-    "image": "https://www.campbelltown.nsw.gov.au/files/sharedassets/public/v/1/services-and-facilities/aquatics-fitness-and-indoor-sports/images/ccc_mac-fields-leisure_photo-gallery_03.jpeg",
-    "description": "Indoor leisure centre with pools, gym, and group fitness spaces.",
-    "autismFriendlyFeatures": "Heated indoor pool with consistent environment; quieter midweek sessions.",
-    "cost": "Paid",
-    "tags": ["swimming", "movement", "indoor"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair accessible, pool hoist, accessible change rooms."
+    id: 4,
+    name: "Macquarie Fields Leisure Centre",
+    type: "Leisure Centre",
+    council: "Campbelltown City Council",
+    image_url: "https://www.campbelltown.nsw.gov.au/files/sharedassets/public/v/1/services-and-facilities/aquatics-fitness-and-indoor-sports/images/ccc_mac-fields-leisure_photo-gallery_03.jpeg",
+    about: "Indoor leisure centre with pools, gym, and group fitness spaces.",
+    autism_friendly_features: [
+      "Heated indoor pool with consistent environment",
+      "Quieter midweek sessions"
+    ],
+    cost: "Paid",
+    tags: ["swimming", "movement", "indoor"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair accessible",
+      "Pool hoist",
+      "Accessible change rooms"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "Quieter midweek sessions",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 5,
-    "type": "leisure",
-    "name": "Ian Thorpe Aquatic Centre",
-    "council": "City of Sydney Council",
-    "image": "https://i0.wp.com/steensenvarming.com/wp-content/uploads/2023/01/Ian-Thorpe-Aquatic-Centre-1.jpg",
-    "description": "Award-winning indoor aquatic centre with heated pools and fitness facilities.",
-    "autismFriendlyFeatures": "Design reduces glare; structured sessions; quieter weekday access.",
-    "cost": "Paid",
-    "tags": ["swimming", "indoor", "movement", "fitness"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible lifts, aquatic wheelchair."
+    id: 5,
+    name: "Ian Thorpe Aquatic Centre",
+    type: "Swimming",
+    council: "City of Sydney Council",
+    image_url: "https://i0.wp.com/steensenvarming.com/wp-content/uploads/2023/01/Ian-Thorpe-Aquatic-Centre-1.jpg",
+    about: "Award-winning indoor aquatic centre with heated pools and fitness facilities.",
+    autism_friendly_features: [
+      "Design reduces glare",
+      "Structured sessions",
+      "Quieter weekday access"
+    ],
+    cost: "Paid",
+    tags: ["swimming", "indoor", "movement", "fitness"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible lifts",
+      "Aquatic wheelchair"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "Quieter weekday access",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 6,
-    "type": "leisure",
-    "name": "Fairfield Leisure Centre",
-    "council": "Fairfield City Council",
-    "image": "https://www.fairfieldcityleisurecentres.com.au/wp-content/uploads/2025/12/home_featured-image.jpg",
-    "description": "Aquatic and recreation centre with indoor pools and gym.",
-    "autismFriendlyFeatures": "Family-friendly environment; quieter daytime access.",
-    "cost": "Paid",
-    "tags": ["swimming", "indoor", "movement"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible parking."
+    id: 6,
+    name: "Fairfield Leisure Centre",
+    type: "Leisure Centre",
+    council: "Fairfield City Council",
+    image_url: "https://www.fairfieldcityleisurecentres.com.au/wp-content/uploads/2025/12/home_featured-image.jpg",
+    about: "Aquatic and recreation centre with indoor pools and gym.",
+    autism_friendly_features: [
+      "Family-friendly environment",
+      "Quieter daytime access"
+    ],
+    cost: "Paid",
+    tags: ["swimming", "indoor", "movement"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible parking"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "Quieter daytime access",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 7,
-    "type": "leisure",
-    "name": "Whitlam Leisure Centre Liverpool",
-    "council": "Liverpool City Council",
-    "image": "https://www.whitlamleisurecentre.com.au/getmedia/ea354230-9783-4ee1-8fb7-22ff35c274a1/Banner-template-(95).png",
-    "description": "Indoor aquatic and fitness facility with lap and leisure pools.",
-    "autismFriendlyFeatures": "Controlled indoor environment; structured programs.",
-    "cost": "Paid",
-    "tags": ["swimming", "indoor", "movement"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, pool hoist, accessible amenities."
+    id: 7,
+    name: "Whitlam Leisure Centre Liverpool",
+    type: "Leisure Centre",
+    council: "Liverpool City Council",
+    image_url: "https://www.whitlamleisurecentre.com.au/getmedia/ea354230-9783-4ee1-8fb7-22ff35c274a1/Banner-template-(95).png",
+    about: "Indoor aquatic and fitness facility with lap and leisure pools.",
+    autism_friendly_features: [
+      "Controlled indoor environment",
+      "Structured programs"
+    ],
+    cost: "Paid",
+    tags: ["swimming", "indoor", "movement"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Pool hoist",
+      "Accessible amenities"
+    ],
+    address: "",
+    noise_level: "Moderate",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 8,
-    "type": "library",
-    "name": "Blacktown City Library",
-    "council": "Blacktown City Council",
-    "image": "https://www.blacktown.nsw.gov.au/files/assets/public/v/1/services/blacktown_screen_-res-70_340px.jpg",
-    "description": "Main public library with study spaces, children's area, and community programs.",
-    "autismFriendlyFeatures": "Quiet study areas, structured children's storytime sessions.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor", "community"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible desks, accessible toilets."
+    id: 8,
+    name: "Blacktown City Library",
+    type: "Library",
+    council: "Blacktown City Council",
+    image_url: "https://www.blacktown.nsw.gov.au/files/assets/public/v/1/services/blacktown_screen_-res-70_340px.jpg",
+    about: "Main public library with study spaces, children's area, and community programs.",
+    autism_friendly_features: [
+      "Quiet study areas",
+      "Structured children's storytime sessions"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor", "community"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible desks",
+      "Accessible toilets"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 9,
-    "type": "library",
-    "name": "Camden Library",
-    "council": "Camden Council",
-    "image": "https://camdenhistorynotes.com/wp-content/uploads/2023/08/camden-museum-library-2023-mgnsw-lowres.jpg",
-    "description": "Community library with children's programs and quiet reading zones.",
-    "autismFriendlyFeatures": "Calm indoor environment, designated quiet spaces.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible facilities."
+    id: 9,
+    name: "Camden Library",
+    type: "Library",
+    council: "Camden Council",
+    image_url: "https://camdenhistorynotes.com/wp-content/uploads/2023/08/camden-museum-library-2023-mgnsw-lowres.jpg",
+    about: "Community library with children's programs and quiet reading zones.",
+    autism_friendly_features: [
+      "Calm indoor environment",
+      "Designated quiet spaces"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible facilities"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 10,
-    "type": "library",
-    "name": "Campbelltown Library",
-    "council": "Campbelltown City Council",
-    "image": "https://www.campbelltown.sa.gov.au/__data/assets/image/0013/241321/varieties/banner.jpg",
-    "description": "Large public library with study rooms, youth space, and children's programs.",
-    "autismFriendlyFeatures": "Quiet rooms available; structured programs.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor", "community"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, lift access."
+    id: 10,
+    name: "Campbelltown Library",
+    type: "Library",
+    council: "Campbelltown City Council",
+    image_url: "https://www.campbelltown.sa.gov.au/__data/assets/image/0013/241321/varieties/banner.jpg",
+    about: "Large public library with study rooms, youth space, and children's programs.",
+    autism_friendly_features: [
+      "Quiet rooms available",
+      "Structured programs"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor", "community"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Lift access"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 11,
-    "type": "library",
-    "name": "Bankstown Library and Knowledge Centre",
-    "council": "Canterbury-Bankstown Council",
-    "image": "https://www.planning.nsw.gov.au/sites/default/files/2023-11/bankstown-library-and-knowledge-centre-5-900x600.jpg",
-    "description": "Modern multi-level library with children's zone and quiet study areas.",
-    "autismFriendlyFeatures": "Designated quiet floors and structured children's sessions.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, lifts, accessible amenities."
+    id: 11,
+    name: "Bankstown Library and Knowledge Centre",
+    type: "Library",
+    council: "Canterbury-Bankstown Council",
+    image_url: "https://www.planning.nsw.gov.au/sites/default/files/2023-11/bankstown-library-and-knowledge-centre-5-900x600.jpg",
+    about: "Modern multi-level library with children's zone and quiet study areas.",
+    autism_friendly_features: [
+      "Designated quiet floors",
+      "Structured children's sessions"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Lifts",
+      "Accessible amenities"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 12,
-    "type": "library",
-    "name": "Customs House Library",
-    "council": "City of Sydney Council",
-    "image": "https://www.cityofsydney.nsw.gov.au/-/media/corporate/images/places-and-spaces/libraries/customs-house-library/parent-library-page/customshouselibrary-highres-7340-op.jpg",
-    "description": "City library with harbour views, reading areas, and study spaces.",
-    "autismFriendlyFeatures": "Quiet reading environment and structured programming.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor"],
-    "ageSuitability": "All ages",
-    "accessibility": "Lift access, wheelchair accessible."
+    id: 12,
+    name: "Customs House Library",
+    type: "Library",
+    council: "City of Sydney Council",
+    image_url: "https://www.cityofsydney.nsw.gov.au/-/media/corporate/images/places-and-spaces/libraries/customs-house-library/parent-library-page/customshouselibrary-highres-7340-op.jpg",
+    about: "City library with harbour views, reading areas, and study spaces.",
+    autism_friendly_features: [
+      "Quiet reading environment",
+      "Structured programming"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Lift access",
+      "Wheelchair accessible"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 13,
-    "type": "library",
-    "name": "Fairfield City Open Libraries",
-    "council": "Fairfield City Council",
-    "image": "https://henrico.gov/assets/FAL-01-Exterior-Front_Out.jpg",
-    "description": "Public library network offering study areas and children's programs.",
-    "autismFriendlyFeatures": "Quiet indoor setting and routine-based activities.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, accessible amenities."
+    id: 13,
+    name: "Fairfield City Open Libraries",
+    type: "Library",
+    council: "Fairfield City Council",
+    image_url: "https://henrico.gov/assets/FAL-01-Exterior-Front_Out.jpg",
+    about: "Public library network offering study areas and children's programs.",
+    autism_friendly_features: [
+      "Quiet indoor setting",
+      "Routine-based activities"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Accessible amenities"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   },
   {
-    "id": 14,
-    "type": "library",
-    "name": "Liverpool City Library",
-    "council": "Liverpool City Council",
-    "image": "https://www.liverpool.nsw.gov.au/__data/assets/image/0007/258541/Yellamundie-576x324.png",
-    "description": "Major regional library with study rooms, children's area, and events.",
-    "autismFriendlyFeatures": "Quiet study zones; structured children's programming.",
-    "cost": "Free",
-    "tags": ["quiet", "reading", "indoor", "community"],
-    "ageSuitability": "All ages",
-    "accessibility": "Wheelchair access, lifts, accessible toilets."
+    id: 14,
+    name: "Liverpool City Library",
+    type: "Library",
+    council: "Liverpool City Council",
+    image_url: "https://www.liverpool.nsw.gov.au/__data/assets/image/0007/258541/Yellamundie-576x324.png",
+    about: "Major regional library with study rooms, children's area, and events.",
+    autism_friendly_features: [
+      "Quiet study zones",
+      "Structured children's programming"
+    ],
+    cost: "Free",
+    tags: ["quiet", "reading", "indoor", "community"],
+    age_suitability: "All ages",
+    accessibility_features: [
+      "Wheelchair access",
+      "Lifts",
+      "Accessible toilets"
+    ],
+    address: "",
+    noise_level: "Very Quiet",
+    quiet_hours: "",
+    verified: true,
+    author_type: "developer"
   }
-]
+];

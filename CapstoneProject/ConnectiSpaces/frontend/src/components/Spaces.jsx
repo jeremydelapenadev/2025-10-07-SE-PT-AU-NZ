@@ -1,9 +1,7 @@
-import { useState, useContext } from "react";
-import { spaces } from "../assets/data";
+import { useState, useContext, useEffect } from "react";
 import { UserFavourites } from "../context/UserFavourites";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/UserProvider";
-
 import {
   Button,
   IconButton,
@@ -21,9 +19,22 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 
 function Spaces() {
+  
   const { favourites, addFavourite } = useContext(UserFavourites);
   const { currentUser } = useContext(userContext);
   const navigate = useNavigate();
+
+  const [spaces, setSpaces] = useState([]);
+  
+  useEffect(() => {
+    fetch("http://localhost:8080/api/spaces")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Spaces from backend:", data);
+        setSpaces(data.data || []);
+      })
+      .catch((err) => console.error("Error fetching spaces:", err));
+  }, []);
 
   const [filters, setFilters] = useState({
     type: "",
@@ -44,7 +55,6 @@ function Spaces() {
 
   // for the dialog box
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedSpace, setSelectedSpace] = useState(null);
   const [dialogMessage, setDialogMessage] = useState("");
 
   const handleAddFavourite = (space) => {
@@ -70,9 +80,6 @@ function Spaces() {
     setDialogOpen(true);
   };
 
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
   const resetFilters = () => {
     setFilters({
       type: "",
@@ -90,17 +97,17 @@ function Spaces() {
       (filters.council === "" || space.council === filters.council) &&
       (filters.cost === "" || space.cost === filters.cost) &&
       (filters.ageSuitability === "" ||
-        space.ageSuitability
+        space.age_suitability
           .toLowerCase()
           .includes(filters.ageSuitability.toLowerCase())) &&
       (filters.autismFriendlyFeatures === "" ||
-        space.autismFriendlyFeatures
+        space.autism_friendly_features
           .toLowerCase()
           .includes(filters.autismFriendlyFeatures.toLowerCase())) &&
       (filters.accessibility === "" ||
-        space.accessibility
-          .toLowerCase()
-          .includes(filters.accessibility.toLowerCase()))
+        space.accessibility_features || [].some((feature) =>
+          feature.toLowerCase().includes(filters.accessibility.toLowerCase())
+      ))
     );
   });
 
@@ -205,11 +212,11 @@ function Spaces() {
           }}
         >
           {filteredSpaces.map((space) => (
-            <Card key={space.id}>
+            <Card key={space._id}>
               <CardMedia
                 component="img"
                 height="200"
-                image={space.image}
+                image={space.image_url}
                 alt={space.name}
               />
               <CardContent>
@@ -228,7 +235,7 @@ function Spaces() {
                   <strong>Type:</strong> {space.type} <br />
                   <strong>Council:</strong> {space.council} <br />
                   <strong>Cost:</strong> {space.cost} <br />
-                  <strong>Age:</strong> {space.ageSuitability}
+                  <strong>Age:</strong> {space.age_suitability}
                 </Typography>
 
                 <Typography variant="body2" style={{ marginTop: "10px" }}>

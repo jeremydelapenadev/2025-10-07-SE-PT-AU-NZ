@@ -1,42 +1,58 @@
-import React, { useEffect, useRef } from "react";
-import { spaces } from "../assets/data"; // import your spaces array
-import "../assets/css/ImageScroller.css"; // import CSS for styling
+import React, { useEffect, useRef, useState } from "react";
+import "../assets/css/ImageScroller.css";
 
 export default function ImageScroller() {
-  const scrollRef = useRef();
+  const scrollRef = useRef(null);
+  const [spaces, setSpaces] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/spaces")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("API response:", data);
+        setSpaces(data.data || []);
+      })
+      .catch((err) => console.error("Error fetching spaces:", err));
+  }, []);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
+    if (!scrollContainer || spaces.length === 0) return;
+
     let animationFrame;
 
     const scroll = () => {
-      if (scrollContainer) {
-        scrollContainer.scrollLeft += 1; // adjust speed
-        // reset to start when reaching the end
-        if (
-          scrollContainer.scrollLeft >=
-          scrollContainer.scrollWidth - scrollContainer.clientWidth
-        ) {
-          scrollContainer.scrollLeft = 0;
-        }
-        animationFrame = requestAnimationFrame(scroll);
+      scrollContainer.scrollLeft += 1;
+
+      if (
+        scrollContainer.scrollLeft >=
+        scrollContainer.scrollWidth - scrollContainer.clientWidth
+      ) {
+        scrollContainer.scrollLeft = 0;
       }
+
+      animationFrame = requestAnimationFrame(scroll);
     };
 
     animationFrame = requestAnimationFrame(scroll);
+
     return () => cancelAnimationFrame(animationFrame);
-  }, []);
+  }, [spaces]);
 
   return (
-    <div className="scroll-wrapper" ref={scrollRef}>
-      {spaces.map((space) => (
-        <img
-          key={space.id}
-          src={space.image}
-          alt={space.name}
-          className="scroll-img"
-        />
-      ))}
+    <div>
+      <p>{spaces.length} spaces loaded</p>
+
+      <div className="scroll-wrapper" ref={scrollRef}>
+        {spaces.map((space) => (
+          <img
+            key={space._id}
+            src={space.image_url}
+            alt={space.name}
+            className="scroll-img"
+          />
+        ))}
+      </div>
     </div>
   );
 }
