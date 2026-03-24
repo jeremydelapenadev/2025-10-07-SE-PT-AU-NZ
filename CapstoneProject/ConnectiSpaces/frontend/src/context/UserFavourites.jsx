@@ -7,13 +7,13 @@ export function FavouritesProvider({ children }) {
 
   const addFavourite = (space) => {
     setFavourites((prev) => {
-      if (prev.find((item) => item.id === space.id)) return prev;
+      if (prev.find((item) => item._id === space._id)) return prev;
       return [...prev, space];
     });
   };
 
   const removeFavourite = (id) => {
-    setFavourites((prev) => prev.filter((item) => item.id !== id));
+    setFavourites((prev) => prev.filter((item) => item._id !== id));
   };
 
   return (

@@ -1,9 +1,7 @@
-import { useState, useContext } from "react";
-import { spaces } from "../assets/data";
+import { useState, useContext, useEffect } from "react";
 import { UserFavourites } from "../context/UserFavourites";
 import { useNavigate } from "react-router-dom";
 import { userContext } from "../context/UserProvider";
-
 import {
   Button,
   IconButton,
@@ -24,6 +22,17 @@ function Spaces() {
   const { favourites, addFavourite } = useContext(UserFavourites);
   const { currentUser } = useContext(userContext);
   const navigate = useNavigate();
+  const [spaces, setSpaces] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/spaces")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Spaces from backend:", data);
+        setSpaces(data.data || []);
+      })
+      .catch((err) => console.error("Error fetching spaces:", err));
+  }, []);
 
   const [filters, setFilters] = useState({
     type: "",
@@ -44,7 +53,6 @@ function Spaces() {
 
   // for the dialog box
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [selectedSpace, setSelectedSpace] = useState(null);
   const [dialogMessage, setDialogMessage] = useState("");
 
   const handleAddFavourite = (space) => {
@@ -56,7 +64,7 @@ function Spaces() {
     }
 
     // Check if already added
-    const alreadyAdded = favourites.some((fav) => fav.id === space.id);
+    const alreadyAdded = favourites.some((fav) => fav._id === space._id);
     if (alreadyAdded) {
       setDialogMessage("You have already added this to your favourite spaces.");
       setDialogOpen(true);
@@ -65,14 +73,10 @@ function Spaces() {
 
     // Normal behaviour if logged in
     addFavourite(space);
-    setSelectedSpace(space);
     setDialogMessage(`${space.name} has been added to your favourites.`);
     setDialogOpen(true);
   };
 
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
   const resetFilters = () => {
     setFilters({
       type: "",
@@ -85,27 +89,32 @@ function Spaces() {
   };
 
   const filteredSpaces = spaces.filter((space) => {
+    const autismFeatures = space.autism_friendly_features || [];
+    const accessibilityFeatures = space.accessibility_features || [];
     return (
-      (filters.type === "" || space.type === filters.type) &&
+      (filters.type === "" ||
+        (space.type || "").toLowerCase() === filters.type.toLowerCase()) &&
       (filters.council === "" || space.council === filters.council) &&
       (filters.cost === "" || space.cost === filters.cost) &&
       (filters.ageSuitability === "" ||
-        space.ageSuitability
+        space.age_suitability
           .toLowerCase()
           .includes(filters.ageSuitability.toLowerCase())) &&
       (filters.autismFriendlyFeatures === "" ||
-        space.autismFriendlyFeatures
-          .toLowerCase()
-          .includes(filters.autismFriendlyFeatures.toLowerCase())) &&
+        autismFeatures.some((feature) =>
+          feature
+            .toLowerCase()
+            .includes(filters.autismFriendlyFeatures.toLowerCase()),
+        )) &&
       (filters.accessibility === "" ||
-        space.accessibility
-          .toLowerCase()
-          .includes(filters.accessibility.toLowerCase()))
+        accessibilityFeatures.some((feature) =>
+          feature.toLowerCase().includes(filters.accessibility.toLowerCase()),
+        ))
     );
   });
 
   return (
-    <div style={{ padding: "50px" }}>
+    <div style={{ padding: "10px" }} className="fade-in">
       <Typography variant="h2" gutterBottom sx={{ fontWeight: 600 }}>
         Community Spaces
       </Typography>
@@ -122,8 +131,9 @@ function Spaces() {
       >
         <select name="type" value={filters.type} onChange={handleChange}>
           <option value="">Type</option>
-          <option value="leisure">Leisure</option>
           <option value="library">Library</option>
+          <option value="leisure centre">Leisure Centre</option>
+          <option value="swimming">Swimming</option>
         </select>
 
         <select name="council" value={filters.council} onChange={handleChange}>
@@ -205,13 +215,16 @@ function Spaces() {
           }}
         >
           {filteredSpaces.map((space) => (
-            <Card key={space.id}>
-              <CardMedia
-                component="img"
-                height="200"
-                image={space.image}
-                alt={space.name}
-              />
+            <Card key={space._id}>
+              <div className="image-container">
+                <CardMedia
+                  component="img"
+                  height="200"
+                  image={space.image_url}
+                  alt={space.name}
+                  className="space-image"
+                />
+              </div>
               <CardContent>
                 <Typography variant="h6">
                   {space.name}
@@ -228,7 +241,7 @@ function Spaces() {
                   <strong>Type:</strong> {space.type} <br />
                   <strong>Council:</strong> {space.council} <br />
                   <strong>Cost:</strong> {space.cost} <br />
-                  <strong>Age:</strong> {space.ageSuitability}
+                  <strong>Age:</strong> {space.age_suitability}
                 </Typography>
 
                 <Typography variant="body2" style={{ marginTop: "10px" }}>

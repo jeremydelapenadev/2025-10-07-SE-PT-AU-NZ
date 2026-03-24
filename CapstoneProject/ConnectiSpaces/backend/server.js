@@ -1,14 +1,19 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 require("dotenv").config();
 
 require("./dbConnect"); // MUST come before routes
+
+// Enable CORS for all routes
+app.use(cors());
 
 // Import the routes
 let userRoutes = require("./routes/userRoutes");
 let postRoutes = require("./routes/postRoutes");
 let commentRoutes = require("./routes/commentRoutes");
 let likeRoutes = require("./routes/likeRoutes");
+let spaceRoutes = require("./routes/spaceRoutes");
 
 // Middleware to parse JSON / parse requests of content-type - application/json
 app.use(express.json());
@@ -18,6 +23,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
+app.use("/api/spaces", spaceRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to my MongoDB application." });

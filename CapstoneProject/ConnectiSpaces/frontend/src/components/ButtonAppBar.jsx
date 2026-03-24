@@ -13,6 +13,7 @@ export default function ButtonAppBar() {
   const { currentUser } = useContext(userContext);
 
   return (
+    <>
     <AppBar
       position="fixed"
       sx={{
@@ -102,5 +103,7 @@ export default function ButtonAppBar() {
         )}
       </Toolbar>
     </AppBar>
+    <Toolbar />
+    </>
   );
 }
