@@ -15,6 +15,7 @@ import {
   DialogActions,
   Box,
   Chip,
+  TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -23,6 +24,7 @@ function Spaces() {
   const { currentUser } = useContext(userContext);
   const navigate = useNavigate();
   const [spaces, setSpaces] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8080/api/spaces")
@@ -86,18 +88,33 @@ function Spaces() {
       ageSuitability: "",
       accessibility: "",
     });
+    setSearchTerm("");
   };
 
   const filteredSpaces = spaces.filter((space) => {
     const autismFeatures = space.autism_friendly_features || [];
     const accessibilityFeatures = space.accessibility_features || [];
+    const tags = space.tags || [];
+
+    // search feature
+    const matchesSearch =
+      searchTerm === "" ||
+      (space.name || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (space.type || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (space.council || "").toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (space.description || "")
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()) ||
+      tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+
     return (
+      matchesSearch &&
       (filters.type === "" ||
         (space.type || "").toLowerCase() === filters.type.toLowerCase()) &&
       (filters.council === "" || space.council === filters.council) &&
       (filters.cost === "" || space.cost === filters.cost) &&
       (filters.ageSuitability === "" ||
-        space.age_suitability
+        (space.age_suitability || "")
           .toLowerCase()
           .includes(filters.ageSuitability.toLowerCase())) &&
       (filters.autismFriendlyFeatures === "" ||
@@ -188,8 +205,24 @@ function Spaces() {
         </select>
       </div>
 
+      {/* SEARCH BOX */}
+      <div
+        style={{
+          marginBottom: "20px",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <TextField
+          label="Search spaces"
+          variant="outlined"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          sx={{ width: "100%", maxWidth: "500px", mr:2 }}
+        />
+
       {/* ACTION BUTTONS */}
-      <div style={{ marginBottom: "25px" }}>
+
         <Button variant="contained" color="secondary" onClick={resetFilters}>
           Reset Filters
         </Button>
@@ -205,7 +238,7 @@ function Spaces() {
 
       {/* RESULTS GRID */}
       {filteredSpaces.length === 0 ? (
-        <Typography>No spaces match your filters.</Typography>
+        <Typography>No spaces match your search or filters.</Typography>
       ) : (
         <div
           style={{
@@ -257,7 +290,7 @@ function Spaces() {
                     marginTop: 1,
                   }}
                 >
-                  {space.tags.map((tag, index) => (
+                  {(space.tags || []).map((tag, index) => (
                     <Chip
                       key={index}
                       label={tag}
