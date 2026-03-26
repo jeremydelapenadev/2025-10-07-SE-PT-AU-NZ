@@ -3,5 +3,6 @@ module.exports = {
   postController: require("./postController"),
   commentController: require("./commentController"),
   likeController: require("./likeController"),
-  spaceController: require("./spaceController")
+  spaceController: require("./spaceController"),
+  reviewController: require("./reviewController"),
 };

@@ -15,6 +15,7 @@ let commentRoutes = require("./routes/commentRoutes");
 let likeRoutes = require("./routes/likeRoutes");
 let spaceRoutes = require("./routes/spaceRoutes");
 let authRoutes = require("./routes/authRoutes");
+let reviewRoutes = require("./routes/reviewRoutes");
 
 // Middleware to parse JSON / parse requests of content-type - application/json
 app.use(express.json());
@@ -26,6 +27,7 @@ app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/spaces", spaceRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to my MongoDB application." });

@@ -91,6 +91,11 @@ function Spaces() {
     setSearchTerm("");
   };
 
+// direct to the SpaceView.jsx when click on a space card
+    const handleViewSpace = (spaceId) => {
+      navigate(`/spaces/${spaceId}`);
+    };
+
   const filteredSpaces = spaces.filter((space) => {
     const autismFeatures = space.autism_friendly_features || [];
     const accessibilityFeatures = space.accessibility_features || [];
@@ -218,10 +223,10 @@ function Spaces() {
           variant="outlined"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{ width: "100%", maxWidth: "500px", mr:2 }}
+          sx={{ width: "100%", maxWidth: "500px", mr: 2 }}
         />
 
-      {/* ACTION BUTTONS */}
+        {/* ACTION BUTTONS */}
 
         <Button variant="contained" color="secondary" onClick={resetFilters}>
           Reset Filters
@@ -247,8 +252,21 @@ function Spaces() {
             gap: "20px",
           }}
         >
+          {" "}
+          {/* added to transition to SpaceView.jsx*/}
           {filteredSpaces.map((space) => (
-            <Card key={space._id}>
+            <Card
+              key={space._id}
+              sx={{
+                cursor: "pointer",
+                transition: "0.2s",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: 6,
+                },
+              }}
+              onClick={() => handleViewSpace(space._id)}
+            >
               <div className="image-container">
                 <CardMedia
                   component="img"
@@ -263,7 +281,13 @@ function Spaces() {
                   {space.name}
                   <IconButton
                     color="primary"
-                    onClick={() => handleAddFavourite(space)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      {
+                        /* so pressing favourites does not also open the detail page */
+                      }
+                      handleAddFavourite(space);
+                    }}
                     style={{ float: "right" }}
                   >
                     <AddIcon />

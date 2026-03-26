@@ -4,5 +4,6 @@ module.exports = {
   Post: require("./post"),
   Comment: require("./comment"),
   Like: require("./like"),
-  Space: require("./space")
+  Space: require("./space"),
+  Review: require("./review"),
 };
