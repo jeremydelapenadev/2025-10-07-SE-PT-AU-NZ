@@ -16,16 +16,23 @@ function Favourites() {
   const { currentUser } = useContext(userContext);
   const navigate = useNavigate();
 
+  // direct to the SpaceView.jsx when click on a space card
+  const handleViewSpace = (spaceId) => {
+    navigate(`/spaces/${spaceId}`);
+  };
+
   return (
-    <div style={{
-    marginTop: "5px",
-    padding: "0 50px 50px 50px",
-  }}
-  className="fade-in">
+    <div
+      style={{
+        marginTop: "5px",
+        padding: "0 50px 50px 50px",
+      }}
+      className="fade-in"
+    >
       <Typography variant="h2" gutterBottom sx={{ fontWeight: 600 }}>
         My Favourite Spaces
       </Typography>
-      <Typography variant="h5" sx={{ fontWeight: 600, mb:3 }}>
+      <Typography variant="h5" sx={{ fontWeight: 600, mb: 3 }}>
         Welcome, <span style={{ color: "blue" }}>{currentUser?.username}</span>!
       </Typography>
       <Button
@@ -47,7 +54,17 @@ function Favourites() {
           }}
         >
           {favourites.map((space) => (
-            <Card key={space._id}>
+            <Card
+              key={space._id}
+              sx={{
+                cursor: "pointer",
+                transition: "0.2s",
+                "&:hover": {
+                  transform: "translateY(-4px)",
+                  boxShadow: 6,
+                },
+              }}
+            >
               <div className="image-container">
                 <CardMedia
                   component="img"
@@ -55,6 +72,7 @@ function Favourites() {
                   image={space.image_url}
                   alt={space.name}
                   className="space-image"
+                  onClick={() => handleViewSpace(space._id)}
                 />
               </div>
               <CardContent>
