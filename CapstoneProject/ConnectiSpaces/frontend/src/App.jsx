@@ -1,4 +1,4 @@
-import "./App.css";
+import "./assets/css/App.css";
 import AppRoutes from "./components/AppRoutes";
 import NavBar from "./components/NavBar";
 import { FavouritesProvider } from "./context/UserFavourites";

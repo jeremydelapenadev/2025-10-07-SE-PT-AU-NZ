@@ -142,7 +142,7 @@ function Spaces() {
       </Typography>
 
       {/* FILTER SECTION */}
-      <div
+      <div className="filter-bar"
         style={{
           marginBottom: "20px",
           display: "flex",
