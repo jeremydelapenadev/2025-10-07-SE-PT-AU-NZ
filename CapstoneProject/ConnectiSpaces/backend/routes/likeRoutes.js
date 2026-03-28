@@ -15,4 +15,12 @@ router.get("/user/:userId", (req, res) => {
   Controllers.likeController.getLikesByUser(req, res);
 });
 
+router.get("/post/:postId", (req, res) => {
+  Controllers.likeController.getLikesByPost(req, res);
+});
+
+router.get("/comment/:commentId", (req, res) => {
+  Controllers.likeController.getLikesByComment(req, res);
+});
+
 module.exports = router;

@@ -30,6 +30,11 @@ const createReview = (data, res) => {
   console.log(data);
   new Models.Review(data)
     .save()
+    .then((savedReview) => {
+      return Models.Review.findById(savedReview._id)
+        .populate("author_id", "username email")
+        .populate("space_id", "name");
+    })
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
       console.log(err);

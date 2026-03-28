@@ -31,6 +31,13 @@ const reviewSchema = new Schema(
       type: Number,
       default: 0,
     },
+
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+      required: true,
+    },
   },
   {
     timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
