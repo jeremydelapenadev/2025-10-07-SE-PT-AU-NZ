@@ -69,6 +69,13 @@ export default function Community() {
     return obj._id || obj;
   };
 
+  const closeSelectedPost = () => {
+    setSelectedPost(null);
+    setComments([]);
+    setNewComment("");
+    setCommentLikeCounts({});
+  };
+
   const fetchPosts = async () => {
     try {
       const res = await fetch("http://localhost:8080/api/posts");
@@ -252,6 +259,16 @@ export default function Community() {
     }
   };
 
+  const refreshAfterPostLikeChange = async () => {
+    await fetchUserLikes();
+    await fetchPostLikeCounts(posts);
+  };
+
+  const refreshAfterCommentLikeChange = async () => {
+    await fetchUserLikes();
+    await fetchCommentLikeCounts(comments);
+  };
+
   const handleCreatePost = async () => {
     if (!isLoggedIn) {
       alert("Please log in first to create a post.");
@@ -332,10 +349,7 @@ export default function Community() {
 
       if (data.result === 200) {
         if (selectedPost?._id === postId) {
-          setSelectedPost(null);
-          setComments([]);
-          setNewComment("");
-          setCommentLikeCounts({});
+          closeSelectedPost();
         }
         fetchPosts();
       } else {
@@ -360,15 +374,10 @@ export default function Community() {
 
     const isCurrentlyLiked = !!likedPosts[postId];
 
-    setLikedPosts((prev) => ({
-      ...prev,
-      [postId]: !isCurrentlyLiked,
-    }));
-
-    setPostLikeCounts((prev) => ({
-      ...prev,
-      [postId]: Math.max(0, (prev[postId] || 0) + (isCurrentlyLiked ? -1 : 1)),
-    }));
+    console.log("POST LIKE PAYLOAD", {
+      post_id: postId,
+      user_id: currentUser._id,
+    });
 
     try {
       if (!isCurrentlyLiked) {
@@ -422,22 +431,10 @@ export default function Community() {
           );
         }
       }
+
+      await refreshAfterPostLikeChange();
     } catch (err) {
       console.error("Error toggling like:", err);
-
-      setLikedPosts((prev) => ({
-        ...prev,
-        [postId]: isCurrentlyLiked,
-      }));
-
-      setPostLikeCounts((prev) => ({
-        ...prev,
-        [postId]: Math.max(
-          0,
-          (prev[postId] || 0) + (isCurrentlyLiked ? 1 : -1),
-        ),
-      }));
-
       alert("Something went wrong while updating the like.");
     }
   };
@@ -455,18 +452,10 @@ export default function Community() {
 
     const isCurrentlyLiked = !!likedComments[commentId];
 
-    setLikedComments((prev) => ({
-      ...prev,
-      [commentId]: !isCurrentlyLiked,
-    }));
-
-    setCommentLikeCounts((prev) => ({
-      ...prev,
-      [commentId]: Math.max(
-        0,
-        (prev[commentId] || 0) + (isCurrentlyLiked ? -1 : 1),
-      ),
-    }));
+    console.log("COMMENT LIKE PAYLOAD", {
+      comment_id: commentId,
+      user_id: currentUser._id,
+    });
 
     try {
       if (!isCurrentlyLiked) {
@@ -520,22 +509,10 @@ export default function Community() {
           );
         }
       }
+
+      await refreshAfterCommentLikeChange();
     } catch (err) {
       console.error("Error toggling comment like:", err);
-
-      setLikedComments((prev) => ({
-        ...prev,
-        [commentId]: isCurrentlyLiked,
-      }));
-
-      setCommentLikeCounts((prev) => ({
-        ...prev,
-        [commentId]: Math.max(
-          0,
-          (prev[commentId] || 0) + (isCurrentlyLiked ? 1 : -1),
-        ),
-      }));
-
       alert("Something went wrong while updating the comment like.");
     }
   };
@@ -547,10 +524,7 @@ export default function Community() {
     }
 
     if (selectedPost?._id === post._id) {
-      setSelectedPost(null);
-      setComments([]);
-      setNewComment("");
-      setCommentLikeCounts({});
+      closeSelectedPost();
       return;
     }
 
@@ -970,14 +944,7 @@ export default function Community() {
                       {selectedPost.title || "Post"}
                     </Typography>
 
-                    <IconButton
-                      onClick={() => {
-                        setSelectedPost(null);
-                        setComments([]);
-                        setNewComment("");
-                        setCommentLikeCounts({});
-                      }}
-                    >
+                    <IconButton onClick={closeSelectedPost}>
                       <CloseIcon />
                     </IconButton>
                   </Box>

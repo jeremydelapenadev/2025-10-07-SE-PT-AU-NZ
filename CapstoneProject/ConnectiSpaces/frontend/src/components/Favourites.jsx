@@ -348,10 +348,6 @@ function Favourites() {
             <strong>Email:</strong> {currentUser?.email || "N/A"}
           </Typography>
 
-          <Typography variant="body2" sx={{ mb: 1.2, color: "#d6d6d6" }}>
-            <strong>Role:</strong> {currentUser?.role || "User"}
-          </Typography>
-
           <Typography variant="body2" sx={{ color: "#d6d6d6" }}>
             <strong>Favourite Spaces:</strong> {favourites.length}
           </Typography>
@@ -483,9 +479,6 @@ function Favourites() {
                         backgroundColor: "rgba(255,255,255,0.08)",
                       }}
                     >
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>
-                        Community Post
-                      </Typography>
 
                       <Typography
                         variant="body2"
