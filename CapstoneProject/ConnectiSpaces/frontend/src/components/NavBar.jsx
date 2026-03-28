@@ -1,4 +1,4 @@
-import "../App.css";
+import "../assets/css/App.css";
 import ButtonAppBar from "./ButtonAppBar";
 
 export default function NavBar() {

@@ -7,7 +7,13 @@ const userSchema = new Schema({
   password_hash: { type: String, required: true },
   bio: { type: String },
   role: { type: String, default: "user" },
-  created_at: { type: Date, default: Date.now }
+  favourites: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "space",
+    },
+  ],
+  created_at: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("user", userSchema);

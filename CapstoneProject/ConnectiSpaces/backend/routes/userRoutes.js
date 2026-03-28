@@ -20,4 +20,16 @@ router.delete ("/:id", (req, res) => {
   Controllers.userController.deleteUser(req, res);
 })
 
+router.post("/:userId/favourites/:spaceId", (req, res) => {
+  Controllers.userController.addFavouriteSpace(req, res);
+});
+
+router.get("/:userId/favourites", (req, res) => {
+  Controllers.userController.getFavouriteSpaces(req, res);
+});
+
+router.delete("/:userId/favourites/:spaceId", (req, res) => {
+  Controllers.userController.removeFavouriteSpace(req, res);
+});
+
 module.exports = router;

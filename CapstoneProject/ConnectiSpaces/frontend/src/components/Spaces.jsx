@@ -57,27 +57,74 @@ function Spaces() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [dialogMessage, setDialogMessage] = useState("");
 
-  const handleAddFavourite = (space) => {
-    if (!currentUser) {
-      // User not logged in -> show login dialog only
-      setDialogMessage("You must be logged in to add favourites.");
+  const getLoggedInUserId = async () => {
+  if (!currentUser?.email) return null;
+
+  const response = await fetch("http://localhost:8080/api/users");
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error("Unable to fetch users.");
+  }
+
+  const matchedUser = (data.data || []).find(
+    (user) => user.email === currentUser.email
+  );
+
+  return matchedUser?._id || null;
+};
+
+ const handleAddFavourite = async (space) => {
+  if (!currentUser) {
+    // User not logged in -> show login dialog only
+    setDialogMessage("You must be logged in to add favourites.");
+    setDialogOpen(true);
+    return;
+  }
+
+  // Check if already added in frontend favourites list
+  const alreadyAdded = favourites.some((fav) => fav._id === space._id);
+  if (alreadyAdded) {
+    setDialogMessage("You have already added this to your favourite spaces.");
+    setDialogOpen(true);
+    return;
+  }
+
+  try {
+    const userId = await getLoggedInUserId();
+
+    if (!userId) {
+      setDialogMessage("Could not find the logged-in user in MongoDB.");
       setDialogOpen(true);
       return;
     }
 
-    // Check if already added
-    const alreadyAdded = favourites.some((fav) => fav._id === space._id);
-    if (alreadyAdded) {
-      setDialogMessage("You have already added this to your favourite spaces.");
+    const response = await fetch(
+      `http://localhost:8080/api/users/${userId}/favourites/${space._id}`,
+      {
+        method: "POST",
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setDialogMessage(
+        data.error || "Unable to add this to your favourite spaces."
+      );
       setDialogOpen(true);
       return;
     }
 
-    // Normal behaviour if logged in
     addFavourite(space);
     setDialogMessage(`${space.name} has been added to your favourites.`);
     setDialogOpen(true);
-  };
+  } catch (error) {
+    console.error("Error adding favourite:", error);
+    setDialogMessage("Something went wrong while adding this to your favourite spaces.");
+    setDialogOpen(true);
+  }
+};
 
   const resetFilters = () => {
     setFilters({
@@ -91,10 +138,10 @@ function Spaces() {
     setSearchTerm("");
   };
 
-// direct to the SpaceView.jsx when click on a space card
-    const handleViewSpace = (spaceId) => {
-      navigate(`/spaces/${spaceId}`);
-    };
+  // direct to the SpaceView.jsx when click on a space card
+  const handleViewSpace = (spaceId) => {
+    navigate(`/spaces/${spaceId}`);
+  };
 
   const filteredSpaces = spaces.filter((space) => {
     const autismFeatures = space.autism_friendly_features || [];
@@ -142,7 +189,8 @@ function Spaces() {
       </Typography>
 
       {/* FILTER SECTION */}
-      <div className="filter-bar"
+      <div
+        className="filter-bar"
         style={{
           marginBottom: "20px",
           display: "flex",
