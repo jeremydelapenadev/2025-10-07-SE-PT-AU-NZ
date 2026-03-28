@@ -4,6 +4,8 @@ let Models = require("../models");
 // Get all posts
 const getPosts = (res) => {
   Models.Post.find({})
+    .populate("author_id")
+    .sort({ created_at: -1 })
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
       console.log(err);
@@ -14,8 +16,12 @@ const getPosts = (res) => {
 // Create a new post
 const createPost = (data, res) => {
   console.log(data);
+
   new Models.Post(data)
     .save()
+    .then((savedPost) => {
+      return Models.Post.findById(savedPost._id).populate("author_id");
+    })
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
       console.log(err);
@@ -26,7 +32,9 @@ const createPost = (data, res) => {
 // Update a post by ID
 const updatePost = (req, res) => {
   console.log(req.body);
+
   Models.Post.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .populate("author_id")
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
       console.log(err);

@@ -1,52 +1,58 @@
 "use strict";
 let Models = require("../models");
 
-// Get all likes
-const getLikes = (res) => {
-  Models.Like.find({})
-    .then((data) => res.send({ result: 200, data }))
-    .catch((err) => {
-      console.log(err);
-      res.send({ result: 500, error: err.message });
-    });
-};
-
-// Create a new like
 const createLike = (data, res) => {
-  console.log(data);
-  new Models.Like(data)
-    .save()
-    .then((data) => res.send({ result: 200, data }))
+  Models.Like.findOne({
+    user_id: data.user_id,
+    post_id: data.post_id,
+  })
+    .then((existingLike) => {
+      if (existingLike) {
+        return res.send({
+          result: 200,
+          message: "Post already liked",
+          data: existingLike,
+        });
+      }
+
+      return new Models.Like({
+        user_id: data.user_id,
+        post_id: data.post_id,
+      })
+        .save()
+        .then((savedLike) => {
+          res.send({ result: 200, data: savedLike });
+        });
+    })
     .catch((err) => {
-      console.log(err);
+      console.log("Create like error:", err);
       res.send({ result: 500, error: err.message });
     });
 };
 
-// Update a like by ID
-const updateLike = (req, res) => {
-  console.log(req.body);
-  Models.Like.findByIdAndUpdate(req.params.id, req.body, { new: true })
+const removeLike = (req, res) => {
+  const { user_id, post_id } = req.body;
+
+  Models.Like.findOneAndDelete({ user_id, post_id })
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
-      console.log(err);
+      console.log("Remove like error:", err);
       res.send({ result: 500, error: err.message });
     });
 };
 
-// Delete a like by ID
-const deleteLike = (req, res) => {
-  Models.Like.findByIdAndDelete(req.params.id)
+const getLikesByUser = (req, res) => {
+  Models.Like.find({ user_id: req.params.userId })
+    .populate("post_id")
     .then((data) => res.send({ result: 200, data }))
     .catch((err) => {
-      console.log(err);
+      console.log("Get likes by user error:", err);
       res.send({ result: 500, error: err.message });
     });
 };
 
 module.exports = {
-  getLikes,
   createLike,
-  updateLike,
-  deleteLike,
+  removeLike,
+  getLikesByUser,
 };

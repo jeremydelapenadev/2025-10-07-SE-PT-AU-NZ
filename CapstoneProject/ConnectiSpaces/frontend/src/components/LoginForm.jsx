@@ -44,6 +44,11 @@ function LoginForm() {
 
       const data = await response.json();
 
+      console.log("Login response data:", data);
+      console.log("User being stored in context:", data.user);
+      console.log("User _id:", data.user?._id);
+      console.log("User id:", data.user?.id);
+
       if (!response.ok) {
         setResult(data.message);
         return;

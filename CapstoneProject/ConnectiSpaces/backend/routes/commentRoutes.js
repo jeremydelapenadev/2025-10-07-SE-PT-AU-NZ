@@ -2,11 +2,16 @@
 let express = require("express");
 let router = express.Router();
 
-let Controllers = require("../controllers"); // index.js
+let Controllers = require("../controllers");
 
 // GET all comments
 router.get("/", (req, res) => {
   Controllers.commentController.getComments(res);
+});
+
+// GET comments for one specific post
+router.get("/post/:postId", (req, res) => {
+  Controllers.commentController.getCommentsByPost(req, res);
 });
 
 // POST create a new comment
