@@ -14,24 +14,25 @@ connectispaces/
 │   ├── models/
 │   ├── controllers/
 │   ├── routes/
-│   ├── config/
+│   ├── api/seedSpaces.js
 │   └── server.js
+│   └── .env
 │
 ├── frontend/
 │   ├── src/
-│   ├── components/
-│   ├── pages/
+│   │   └── assets/css
+│   │   └── components/
+│   │   └── context/
+│   │   └── hooks/
 │   └── App.jsx
-│
 └── README.md
 
 ## Environment Variables
 
-Create a .env file in the backend:
+Create a `.env` file in the backend:
 
 `PORT=8080
-MONGO_URI=your_mongodb_connection_string
-GEOAPIFY_API_KEY=your_api_key`
+DB_URI=your_mongodb_connection_string`
 
 ## Installation
 
@@ -63,8 +64,11 @@ Frontend:
 `npm run dev`
 
 4. (Optional) Run Both Concurrently
+In the root folder of the project,
 
-In root package.json:
+`npm install concurrently`
+
+In the root package.json, add:
 
 `"scripts": {
   "dev": "concurrently \"cd backend && npm start\" \"cd frontend && npm run dev\""
@@ -72,17 +76,21 @@ In root package.json:
 
 Then run:
 
-`npm run dev
+`npm run dev`
 
 ## Testing
 Use Thunder Client or Postman to test API endpoints:
 
-`/api/spaces
-/api/users
+`/api/users
+/api/auth/login
+/api/spaces
 /api/reviews
+/api/posts
+/api/comments
+/api/likes
 /api/favourites`
 
 ## Database Setup
-- Ensure MongoDB is running
-- Seed initial data (users, spaces) if required
-- Use MongoDB Compass for inspection
+- Ensure MongoDB is running.
+- Seed initial data (users, spaces), if required.
+- Use MongoDB Compass for inspection.
