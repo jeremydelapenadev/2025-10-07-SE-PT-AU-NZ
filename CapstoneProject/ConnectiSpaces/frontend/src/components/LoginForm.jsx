@@ -56,7 +56,7 @@ function LoginForm() {
       handleUpdateUser(data.user); // store the user information in the context
 
       // <-- Immediately redirect to home
-      navigate("/");
+      navigate("/favourites");
       setResult("User logged in successfully.");
     } catch (err) {
       setResult("Server error. Try again.");
