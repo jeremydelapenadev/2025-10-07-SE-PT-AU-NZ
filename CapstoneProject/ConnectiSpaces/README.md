@@ -38,7 +38,7 @@ DB_URI=your_mongodb_connection_string`
 
 1. Clone Repository
 
-`git clone <your-repo-url>
+`git clone https://github.com/jeremydelapenadev/2025-10-07-SE-PT-AU-NZ/tree/8a2e25b2194f5baa266ffc0308a0994a4a4618e5/CapstoneProject/ConnectiSpaces/
 cd connectispaces`
 
 2. Install Dependencies
